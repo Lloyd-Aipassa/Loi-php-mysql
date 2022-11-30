@@ -1,0 +1,34 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 11fr;
+	min-height: 75vh;
+}
+
+.grid-container ul,
+footer ul {
+	list-style: none;
+}
+
+.grid-container a,
+footer a {
+	color: black;
+	text-decoration: none;
+}
+
+aside {
+	background-color: coral;
+	padding: 50px;
+}
+
+main {
+	color: white;
+	background-color: black;
+	width: 100%;
+	padding: 50px;
+}
