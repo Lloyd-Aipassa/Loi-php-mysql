@@ -1,3 +1,6 @@
+<?php
+$pageTitle = 'Boekjaar';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>boekjaar</title>
+    <title> <?php echo $pageTitle; ?> </title>
 </head>
 
 <?php include('components/header.php') ?>
@@ -17,7 +20,7 @@
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
-        Main content
+        Main contenttblababalbla
     </main>
 </div>
 

@@ -13,11 +13,34 @@
 		height: 100%;
 		padding: 5px 0;
 	}
+
+	.ham-btn,
+	.ham-btn img {
+		display: none;
+	}
+
+
+	@media screen and (max-width: 600px) {
+		.ham-btn {
+			display: block;
+			background-color: #ffffff00;
+			border: none;
+		}
+
+		.ham-btn img {
+			display: block;
+			width: 21px;
+		}
+	}
 </style>
 
 <body>
 
 	<header>
-		<h1>logo 33</h1>
-		<img src="pngwing.com.png" alt="logo">
+		<button class="ham-btn"> <img src="img/menu-icon.svg" alt="">
+		</button>
+		<h1><?php echo $pageTitle ?></h1>
+		<img src="img/pngwing.com.png" alt="logo">
+
+
 	</header>

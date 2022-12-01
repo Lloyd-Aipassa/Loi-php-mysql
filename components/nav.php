@@ -1,3 +1,13 @@
+<style>
+    .nav {
+        display: flex;
+        flex-direction: column;
+        min-height: 75vh;
+        justify-content: center;
+        gap: 20px;
+    }
+</style>
+
 <nav>
     <ul class=" nav">
         <li>

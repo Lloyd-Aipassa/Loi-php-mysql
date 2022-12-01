@@ -1,3 +1,6 @@
+<?php
+$pageTitle = 'Soort lid';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>Soort lid</title>
+    <title><?php $pageTitle;?></title>
 </head>
 <?php include('components/header.php') ?>
 <div class="grid-container">

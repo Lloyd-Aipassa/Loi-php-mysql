@@ -4,6 +4,18 @@
 	box-sizing: border-box;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,900;1,400;1,600&display=swap");
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+	font-family: "Poppins", sans-serif;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: 1fr 11fr;
@@ -15,15 +27,18 @@ footer ul {
 	list-style: none;
 }
 
-.grid-container a,
-footer a {
+.grid-container a {
 	color: black;
 	text-decoration: none;
 }
 
 aside {
 	background-color: coral;
-	padding: 50px;
+	padding: 0 50px;
+}
+.active {
+	background-color: coral;
+	padding: 0 50px;
 }
 
 main {
@@ -31,4 +46,38 @@ main {
 	background-color: black;
 	width: 100%;
 	padding: 50px;
+}
+
+@media screen and (max-width: 600px) {
+	.grid-container {
+		position: relative;
+		display: block;
+		min-height: 75vh;
+	}
+
+	main {
+		color: #ffffff;
+		background-color: black;
+		width: 100%;
+		padding: 50px;
+		min-height: 75vh;
+	}
+
+	aside {
+		position: absolute;
+		width: 100%;
+		transform: translatex(-100%);
+		transition: all 500ms;
+		background-color: coral;
+		top: 0;
+		left: 0;
+	}
+
+	.active {
+		position: absolute;
+		width: 100%;
+		transform: translatex(0%);
+		top: 0;
+		left: 0;
+	}
 }
