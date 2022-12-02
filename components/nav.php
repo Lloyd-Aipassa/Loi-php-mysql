@@ -11,6 +11,9 @@
 <nav>
     <ul class=" nav">
         <li>
+            <a href="index.php">Families</a>
+        </li>
+        <li>
             <a href="familie.php">Familie</a>
         </li>
         <li>

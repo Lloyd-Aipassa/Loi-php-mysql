@@ -1,6 +1,30 @@
 <?php
 $pageTitle = 'Families';
 ?>
+
+<?php
+
+include('config/db.php');
+
+// Query de families -- ODER BY IS DE VOLGORDE (nu op achternaam)
+$sql = 'SELECT achternaam, adres, id FROM families ORDER BY achternaam';
+
+// maak query
+$result = mysqli_query($conn, $sql);
+
+// fetch -- het resultaat van de databse rows in een array
+$families = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+//geheugen vrij maken
+mysqli_free_result($result);
+
+//conntie afsluiten (Close)
+mysqli_close($conn);
+
+// print_r($families);
+
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -20,7 +44,19 @@ $pageTitle = 'Families';
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
-        Main content
+        <button><a href="add-familie.php">Toevoegen</a></button>
+        <div class="row">
+            <?php foreach ($families as $familie) { ?>
+                <div class="col">
+                    <div class="content">
+                        <p> Achternaam: <?php echo htmlspecialchars($familie['achternaam']); ?></p>
+                        <hr class="solid">
+                        <p> Adres: <?php echo htmlspecialchars($familie['adres']); ?></p>
+                    </div>
+                    <button class="deteils-fam"><a href="familie-details.php?id=<?php echo $familie['id']; ?>">details</a></button>
+                </div>
+            <?php } ?>
+        </div>
 
     </main>
 </div>
@@ -31,39 +67,17 @@ $pageTitle = 'Families';
 </html>
 
 <style>
-    /* @media screen and (max-width: 600px) {
-        .grid-container {
-            position: relative;
-            display: block;
-            min-height: 75vh;
-        }
+    hr.solid {
+        border-top: 1px solid #fff;
+        margin: 10px 10px 10px 0 ;
+    }
 
-        main {
-            color: white;
-            background-color: black;
-            width: 100%;
-            padding: 50px;
-            min-height: 75vh;
-        }
-
-        aside {
-            position: absolute;
-            width: 100%;
-            transform: translatex(-90%);
-            transition: all 500ms;
-            background-color: coral;
-            top: 0;
-            left: 0;
-        }
-
-        .active {
-            position: absolute;
-            width: 100%;
-            transform: translatex(0%);
-
-            background-color: red;
-            top: 0;
-            left: 0;
-        }
-    } */
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        /* align-items: center; */
+    }
 </style>
