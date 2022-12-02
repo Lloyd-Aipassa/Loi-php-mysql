@@ -59,22 +59,23 @@ if (isset($_GET['id'])) {
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
-        <div class="card-details">
-            <?php if ($familie) : ?>
-                <h1>Familie details</h1>
-                <h3>Achternaaam: <?php echo htmlspecialchars($familie['achternaam']); ?></h3>
-                <h3>Adres: <?php echo htmlspecialchars($familie['adres']); ?></h3>
+        <div class="card-center">
+            <div class="card-details">
+                <?php if ($familie) : ?>
+                    <h1>Familie details</h1>
+                    <h3>Achternaaam: <?php echo htmlspecialchars($familie['achternaam']); ?></h3>
+                    <h3>Adres: <?php echo htmlspecialchars($familie['adres']); ?></h3>
 
-                <!-- delete familie dmv een form met hidden input -->
+                    <!-- delete familie dmv een form met hidden input -->
 
-                <form action="familie-details.php" method="POST">
-                    <input type="hidden" name="id_delete" value="<?php echo $familie['id'] ?>">
-                    <input type="submit" name="delete" value="delete">
-                </form>
-                <button>delete familie</button>
-            <?php else :  ?>
-                <h2>Familie bestaat niet!</h2>
-            <?php endif; ?>
+                    <form action="familie-details.php" method="POST">
+                        <input type="hidden" name="id_delete" value="<?php echo $familie['id'] ?>">
+                        <input type="submit" name="delete" value="Delete familie" class="delete-familie-button">
+                    </form>
+                <?php else :  ?>
+                    <h2>Familie bestaat niet!</h2>
+                <?php endif; ?>
+            </div>
         </div>
     </main>
 </div>
@@ -85,6 +86,12 @@ if (isset($_GET['id'])) {
 </html>
 
 <style>
+    .card-center {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
     .card-details {
         width: 100%;
         max-width: 500px;
@@ -117,5 +124,16 @@ if (isset($_GET['id'])) {
     main .card-details button {
         margin-top: 50px;
         background-color: coral;
+    }
+
+    .delete-familie-button {
+        background-color: coral;
+        border: none;
+        color: white;
+        padding: 15px 50px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-size: 18px;
+        cursor: pointer;
     }
 </style>
