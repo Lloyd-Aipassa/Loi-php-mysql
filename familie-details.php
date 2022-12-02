@@ -8,15 +8,14 @@ if (isset($_POST['delete'])) {
 
     $sql = "DELETE FROM families WHERE id = $id_delete";
 
-    if(mysqli_query($conn, $sql)){
+    if (mysqli_query($conn, $sql)) {
         //succes yes!!
-        header('location: index.php');
-        {
+        header('location: index.php'); {
             //geen yes
             echo 'query error:' . mysqli_error($conn);
         }
     }
-} 
+}
 
 //  check GET request id param -- (in de url)
 if (isset($_GET['id'])) {
@@ -69,7 +68,7 @@ if (isset($_GET['id'])) {
                 <!-- delete familie dmv een form met hidden input -->
 
                 <form action="familie-details.php" method="POST">
-                    <input type="hidden" name="id_delete" value="<?php  echo $familie['id'] ?>">
+                    <input type="hidden" name="id_delete" value="<?php echo $familie['id'] ?>">
                     <input type="submit" name="delete" value="delete">
                 </form>
                 <button>delete familie</button>
