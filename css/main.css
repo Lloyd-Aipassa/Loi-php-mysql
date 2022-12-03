@@ -4,20 +4,6 @@
 	box-sizing: border-box;
 }
 
-/* body {
-	animation-name: start;
-	animation-duration: 700ms;
-}
-
-@keyframes start {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-} */
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,900;1,400;1,600&display=swap");
 h1,
 h2,
@@ -32,7 +18,7 @@ a {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: 1fr 11fr;
+	/* grid-template-columns: 1fr 11fr; */
 	min-height: 75vh;
 }
 
@@ -47,19 +33,41 @@ footer ul {
 }
 
 aside {
-	background-color: coral;
-	padding: 0 50px;
+	/* background-color: #ff8364;
+	padding: 0 50px; */
+	position: absolute;
+	width: 20%;
+	transform: translatex(-100%);
+	transition: all 500ms;
+	background-color: #ff8364;
+	top: 10vh;
+	left: 3%;
 }
 .active {
-	background-color: coral;
-	padding: 0 50px;
+	position: absolute;
+	width: 20%;
+	transform: translatex(0%);
+	top: 10vh;
+	left: 0;
 }
 
 main {
+	/* height: 100%; */
 	color: white;
-	background-color: black;
+	background-color: #818181;
+	background-color: #212121;
+	background-color: #1d1d1d;
+	background-color: #0e0e0e;
+	background: rgb(29, 29, 29);
+	background: rgb(33, 33, 33);
+	background: linear-gradient(
+		310deg,
+		rgba(33, 33, 33, 1) 0%,
+		rgba(14, 14, 14, 1) 100%
+	);
 	width: 100%;
 	padding: 50px;
+	padding-left: 250px;
 }
 
 main button {
@@ -92,13 +100,23 @@ main button a {
 .col {
 	display: flex;
 	align-items: center;
-	border: 1px solid #fff;
+	/* border: 1px solid #fff; */
 	padding: 10px;
 	margin: 0 0 20px 0;
 	width: 100%;
 	max-width: 600px;
 	border-radius: 8px;
 	height: 100%;
+	background-image: linear-gradient(
+		to left top,
+		#0c0c0c,
+		#111111,
+		#161616,
+		#191919,
+		#1d1d1d
+	);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+		rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 @media screen and (max-width: 600px) {
@@ -121,7 +139,7 @@ main button a {
 		width: 100%;
 		transform: translatex(-100%);
 		transition: all 500ms;
-		background-color: coral;
+		background-color: #ff8364;
 		top: 0;
 		left: 0;
 	}

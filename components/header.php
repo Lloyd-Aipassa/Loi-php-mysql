@@ -6,7 +6,7 @@
 		height: 10vh;
 		align-items: center;
 		padding: 0 50px;
-		background-color: #2196f3;
+		background-color: #f3bc77;
 	}
 
 	header img {
@@ -16,7 +16,15 @@
 
 	.ham-btn,
 	.ham-btn img {
-		display: none;
+		/* display: none; */
+		background-color: #ffffff00;
+			border: none;
+
+	}
+
+	.ham-btn img {
+			display: block;
+			width: 21px;
 	}
 
 

@@ -96,16 +96,15 @@ if (isset($_GET['id'])) {
         width: 100%;
         max-width: 500px;
         height: 500px;
-        border: 1px solid #fff;
+        /* border: 1px solid #fff; */
         margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* justify-content: center; */
-        border-radius: 8px;
-        background-color: #1d1d1d;
+        background-image: linear-gradient(to left top, #0c0c0c, #111111, #161616, #191919, #1d1d1d);
         position: relative;
         padding-top: 200px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
 
     .card-details h1 {

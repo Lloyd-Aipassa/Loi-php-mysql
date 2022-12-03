@@ -2,7 +2,7 @@
     footer {
         min-height: 15vh;
         padding: 20px 50px;
-        background-color: #2196f3;
+        background-color: #a55233;
         display: flex;
         width: 100%;
         align-items: center;

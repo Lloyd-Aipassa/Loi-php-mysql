@@ -50,7 +50,7 @@ mysqli_close($conn);
                 <div class="col">
                     <div class="content">
                         <p> Achternaam: <?php echo htmlspecialchars($familie['achternaam']); ?></p>
-                        <hr class="solid">
+                        <!-- <hr class="solid"> -->
                         <p> Adres: <?php echo htmlspecialchars($familie['adres']); ?></p>
                     </div>
                     <button class="deteils-fam"><a href="familie-details.php?id=<?php echo $familie['id']; ?>">details</a></button>
