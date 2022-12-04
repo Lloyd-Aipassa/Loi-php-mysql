@@ -5,23 +5,7 @@ $pageTitle = 'Families';
 <?php
 
 include('config/db.php');
-
-// Query de families -- ODER BY IS DE VOLGORDE (nu op achternaam)
-$sql = 'SELECT achternaam, adres, id FROM families ORDER BY achternaam';
-
-// maak query
-$result = mysqli_query($conn, $sql);
-
-// fetch -- het resultaat van de databse rows in een array
-$families = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-//geheugen vrij maken
-mysqli_free_result($result);
-
-//conntie afsluiten (Close)
-mysqli_close($conn);
-
-// print_r($families);
+include('classes/show-families.php');
 
 ?>
 
@@ -43,22 +27,7 @@ mysqli_close($conn);
     <aside>
         <?php include('components/nav.php') ?>
     </aside>
-    <main class="main">
-        <button><a href="add-familie.php">Toevoegen</a></button>
-        <div class="row">
-            <?php foreach ($families as $familie) { ?>
-                <div class="col">
-                    <div class="content">
-                        <p> Achternaam: <?php echo htmlspecialchars($familie['achternaam']); ?></p>
-                        <!-- <hr class="solid"> -->
-                        <p> Adres: <?php echo htmlspecialchars($familie['adres']); ?></p>
-                    </div>
-                    <button class="deteils-fam"><a href="familie-details.php?id=<?php echo $familie['id']; ?>">details</a></button>
-                </div>
-            <?php } ?>
-        </div>
-
-    </main>
+    <?php include('forms/form-input-families.php') ?>
 </div>
 
 <?php include('components/footer.php') ?>
@@ -69,7 +38,7 @@ mysqli_close($conn);
 <style>
     hr.solid {
         border-top: 1px solid #fff;
-        margin: 10px 10px 10px 0 ;
+        margin: 10px 10px 10px 0;
     }
 
     .content {

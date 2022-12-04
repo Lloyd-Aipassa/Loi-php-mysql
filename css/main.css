@@ -36,12 +36,14 @@ aside {
 	/* background-color: #ff8364;
 	padding: 0 50px; */
 	position: absolute;
+	padding-left: 100px;
 	width: 20%;
 	transform: translatex(-100%);
 	transition: all 500ms;
 	background-color: #ff8364;
 	top: 10vh;
 	left: 3%;
+	z-index: 1000;
 }
 .active {
 	position: absolute;
@@ -49,6 +51,7 @@ aside {
 	transform: translatex(0%);
 	top: 10vh;
 	left: 0;
+	z-index: 1000;
 }
 
 main {
@@ -79,7 +82,7 @@ main button {
 	cursor: pointer;
 	font-size: 18px;
 	text-transform: uppercase;
-	margin: 50px 0 30px 0;
+	margin: 20px 0 30px 0;
 }
 button.deteils-fam {
 	/* margin: 0 30%; */
@@ -97,16 +100,20 @@ main button a {
 	color: #fff !important;
 }
 
-.col {
+.center {
+	/* height: 100%; */
+	width: 100%;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	/* border: 1px solid #fff; */
-	padding: 10px;
-	margin: 0 0 20px 0;
+	justify-content: center;
+}
+
+.row {
 	width: 100%;
 	max-width: 600px;
 	border-radius: 8px;
-	height: 100%;
+	padding: 20px;
 	background-image: linear-gradient(
 		to left top,
 		#0c0c0c,
@@ -117,6 +124,28 @@ main button a {
 	);
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
 		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.col {
+	display: flex;
+	align-items: center;
+	/* border: 1px solid #fff; */
+	padding: 10px;
+	margin: 0 0 20px 0;
+	width: 100%;
+	max-width: 600px;
+	border-radius: 8px;
+	height: 100%;
+	/* background-image: linear-gradient(
+		to left top,
+		#0c0c0c,
+		#111111,
+		#161616,
+		#191919,
+		#1d1d1d
+	);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+		rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
 @media screen and (max-width: 600px) {
@@ -130,8 +159,8 @@ main button a {
 		color: #ffffff;
 		background-color: black;
 		width: 100%;
-		padding: 50px;
-		min-height: 75vh;
+		padding: 20px;
+		max-height: 75vh;
 	}
 
 	aside {
@@ -150,5 +179,6 @@ main button a {
 		transform: translatex(0%);
 		top: 0;
 		left: 0;
+		height: 100%;
 	}
 }

@@ -7,6 +7,7 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
+        z-index: 1001;
     }
 
     footer li {
@@ -14,9 +15,9 @@
     }
 
     footer a {
-        color: white;
+        color: #a55233;
         text-decoration: none;
-        background-color: coral;
+        background-color: #f3bc77;
         padding: 15px 50px;
         border-radius: 8px;
     }

@@ -14,6 +14,8 @@
 		padding: 5px 0;
 	}
 
+
+
 	.ham-btn,
 	.ham-btn img {
 		/* display: none; */
@@ -38,6 +40,10 @@
 		.ham-btn img {
 			display: block;
 			width: 21px;
+		}
+
+		header h1{
+		font-size: 20px;
 		}
 	}
 </style>
