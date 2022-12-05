@@ -16,6 +16,22 @@ a {
 	font-family: "Poppins", sans-serif;
 }
 
+table, th, td {
+	border: 1px solid;
+  }
+table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+
+  td{
+	padding: 10px;
+	text-align: center;
+  }
+  th{
+	padding: 5px;
+  }
+
 .grid-container {
 	display: grid;
 	/* grid-template-columns: 1fr 11fr; */
@@ -57,17 +73,11 @@ aside {
 main {
 	/* height: 100%; */
 	color: white;
-	background-color: #818181;
-	background-color: #212121;
-	background-color: #1d1d1d;
-	background-color: #0e0e0e;
-	background: rgb(29, 29, 29);
-	background: rgb(33, 33, 33);
-	background: linear-gradient(
+	/* background: linear-gradient(
 		310deg,
-		rgba(33, 33, 33, 1) 0%,
-		rgba(14, 14, 14, 1) 100%
-	);
+		rgba(33, 33, 33, 0.9) 0%,
+		rgba(14, 14, 14, 1) 100%); */
+		background-color:rgba(33, 33, 33, 1);
 	width: 100%;
 	padding: 50px;
 	padding-left: 250px;
@@ -75,7 +85,7 @@ main {
 
 main button {
 	/* margin: 0 30%; */
-	padding: 20px;
+	padding: 15px;
 	background-color: coral;
 	color: #fff !important;
 	border-radius: 8px;
@@ -86,7 +96,7 @@ main button {
 }
 button.deteils-fam {
 	/* margin: 0 30%; */
-	padding: 20px;
+	padding: 15px;
 	background-color: coral;
 	color: #fff !important;
 	border-radius: 8px;
@@ -129,23 +139,12 @@ main button a {
 .col {
 	display: flex;
 	align-items: center;
-	/* border: 1px solid #fff; */
 	padding: 10px;
 	margin: 0 0 20px 0;
 	width: 100%;
 	max-width: 600px;
 	border-radius: 8px;
 	height: 100%;
-	/* background-image: linear-gradient(
-		to left top,
-		#0c0c0c,
-		#111111,
-		#161616,
-		#191919,
-		#1d1d1d
-	);
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
 @media screen and (max-width: 600px) {
@@ -157,7 +156,6 @@ main button a {
 
 	main {
 		color: #ffffff;
-		background-color: black;
 		width: 100%;
 		padding: 20px;
 		max-height: 75vh;

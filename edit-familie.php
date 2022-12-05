@@ -1,18 +1,28 @@
 <?php
-$pageTitle = 'Add familie';
+$pageTitle = 'Familie aanpassen';
 ?>
 
 <?php
 
 include('config/db.php');
+
+//Pak ID uit superglobal met GET method
+$id = $_GET['id'];
+
+$sql = 'SELECT * FROM families Where id=:id';
+$statement = $conn->prepare($sql);
+$statement->execute([':id' => $id]);
+$familie = $statement->fetch(PDO::FETCH_OBJ);
+
+
 $message = '';
 if (isset($_POST['achternaam']) && ($_POST['adres'])) {
     $achternaam = $_POST['achternaam'];
     $adres = $_POST['adres'];
-    $sql = 'INSERT INTO families(achternaam, adres) VALUES(:achternaam, :adres)';
+    $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
     $statement = $conn->prepare($sql);
-    if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres])) {
-        $message = 'Familie toegevoegd';
+    if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
+        header("location: index.php");
     }
 }
 
@@ -38,16 +48,16 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
     </aside>
     <main class="main">
         <section class="card-form">
-            <H2>Voeg een familie toe</H2>
-            <form action="add-familie.php" method="POST">
-           <?php echo $message ?>
+            <H2>Familie aanpassen</H2>
+            <form method="POST">
+                <?php echo $message ?>
 
                 <label>achternaam</label>
-                <input type="text" name="achternaam" value="">
+                <input type="text" value="<?= $familie->achternaam; ?>" name="achternaam" value="">
 
                 <label>Adres</label>
 
-                <input type="text" name="adres" value=''>
+                <input type="text" value="<?= $familie->adres; ?>" name="adres" value=''>
 
 
 

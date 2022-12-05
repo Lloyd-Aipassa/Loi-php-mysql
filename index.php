@@ -5,8 +5,10 @@ $pageTitle = 'Families';
 <?php
 
 include('config/db.php');
-include('classes/show-families.php');
-
+$sql = 'SELECT * FROM families';
+$statement = $conn->prepare($sql);
+$statement->execute();
+$families = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,45 @@ include('classes/show-families.php');
     <aside>
         <?php include('components/nav.php') ?>
     </aside>
-    <?php include('forms/form-input-families.php') ?>
+    <main class="main">
+        <div class="center">
+            <div class="row">
+                <button><a href="add-familie.php">Toevoegen</a></button>
+
+                <div class="col">
+                    <!-- <div class="content">
+                        <p> Achternaam: </p>
+                        <p> Adres: </p>
+                        <hr class="solid">
+                    </div> -->
+
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Achternaam</th>
+                            <th>Adres</th>
+                        </tr>
+                        <?php foreach ($families as $familie) : ?>
+                            <tr>
+                                <td><?= $familie->id; ?></td>
+                                <td><?= $familie->achternaam; ?></td>
+                                <td><?= $familie->adres; ?></td>
+                                <td><button class="deteils-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
+                                    <button class="deteils-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delte</a></button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+</div>
+</main>
 </div>
 
 <?php include('components/footer.php') ?>
