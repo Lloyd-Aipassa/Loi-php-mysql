@@ -31,6 +31,7 @@
             justify-content: center;
             text-align: center;
             gap: 20px;
+            z-index: 2000;
         }
     }
 </style>

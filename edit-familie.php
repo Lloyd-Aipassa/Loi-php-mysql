@@ -51,17 +51,11 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
             <H2>Familie aanpassen</H2>
             <form method="POST">
                 <?php echo $message ?>
-
                 <label>achternaam</label>
                 <input type="text" value="<?= $familie->achternaam; ?>" name="achternaam" value="">
-
                 <label>Adres</label>
-
                 <input type="text" value="<?= $familie->adres; ?>" name="adres" value=''>
-
-
-
-                <button type="submit" value="submit" name="submit">voeg toe</button>
+                <button type="submit" value="submit" name="submit">Update familie</button>
             </form>
         </section>
     </main>

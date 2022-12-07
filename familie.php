@@ -1,6 +1,28 @@
 <?php
 $pageTitle = 'Familie';
+
+include('config/db.php');
+
+$id = $_GET['id'];
+$sql = "SELECT 
+    a.achternaam,
+    a.adres,
+    b.id,
+    b.naam,
+    b.geboorteDatum,
+    b.lid_id
+    
+    FROM 
+    families AS a
+    INNER JOIN familieleden AS b ON(a.id = b.lid_id)
+    Where lid_id=:id";
+$statement = $conn->prepare($sql);
+$statement->execute([':id' => $id]);
+$families = $statement->fetchAll();
+// print_r($families)
 ?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -20,7 +42,35 @@ $pageTitle = 'Familie';
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
-        Main content
+        <div class="center">
+            <div class="row">
+                <button><a href="add-familie.php">Nieuwe familie</a></button>
+                <div class="col">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naam</th>
+                            <th>Achternaam</th>
+                            <th>Adres</th>
+                            <th>Geboorte datum</th>
+                        </tr>
+                        <?php foreach ($families as $familie) : ?>
+                            <tr>
+                                <td><?= $familie->id; ?></td>
+                                <td><?= $familie->naam; ?></td>
+                                <td><?= $familie->achternaam; ?></td>
+                                <td><?= $familie->adres; ?></td>
+                                <td><?= $familie->geboorteDatum; ?></td>
+                                <td><button class="details-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
+                                    <button class="details-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delete</a></button>
+                                    <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 

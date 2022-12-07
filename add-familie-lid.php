@@ -2,18 +2,23 @@
 $pageTitle = 'Add familie';
 
 include('config/db.php');
-$message = '';
-if (isset($_POST['achternaam']) && ($_POST['adres'])) {
-    $achternaam = $_POST['achternaam'];
-    $adres = $_POST['adres'];
-    $sql = 'INSERT INTO families(achternaam, adres) VALUES(:achternaam, :adres)';
+
+
+
+if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
+    $naam = $_POST['naam'];
+    $geboorteDatum = $_POST['geboorteDatum'];
+    $lid_id = $_POST['lid_id'];
+    $sql = 'INSERT INTO familieleden(naam, geboorteDatum, lid_id) VALUES(:naam, :geboorteDatum, :lid_id)';
     $statement = $conn->prepare($sql);
-    if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres])) {
-        $message = 'Familie toegevoegd';
+    if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':lid_id' => $lid_id])) {
+        header("location: index.php");
     }
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -33,19 +38,13 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
     </aside>
     <main class="main">
         <section class="card-form">
-            <H2>Voeg een familie toe</H2>
-            <form action="add-familie.php" method="POST">
-           <?php echo $message ?>
-
-                <label>achternaam</label>
-                <input type="text" name="achternaam" value="">
-
-                <label>Adres</label>
-
-                <input type="text" name="adres" value=''>
-
-
-
+            <H2>Voeg een familie lid toe</H2>
+            <form action="add-familie-lid.php" method="POST">
+                <label>Voornaam</label>
+                <input type="text" name="naam" value="">
+                <label>Geboortedatum</label>
+                <input type="date" name="geboorteDatum" value=''>
+                <input type="hidden" name="lid_id" value='<?= $_GET['id']; ?>'>
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>
@@ -110,5 +109,9 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
         border-bottom: 1px solid #fff;
         background-color: #ffffff00;
         color: #fff;
+    }
+
+    input:focus-visible {
+        outline: none;
     }
 </style>

@@ -5,10 +5,11 @@ $pageTitle = 'Families';
 <?php
 
 include('config/db.php');
+
 $sql = 'SELECT * FROM families';
 $statement = $conn->prepare($sql);
 $statement->execute();
-$families = $statement->fetchAll(PDO::FETCH_OBJ);
+$families = $statement->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -32,15 +33,8 @@ $families = $statement->fetchAll(PDO::FETCH_OBJ);
     <main class="main">
         <div class="center">
             <div class="row">
-                <button><a href="add-familie.php">Toevoegen</a></button>
-
+                <button><a href="add-familie.php">Nieuwe familie</a></button>
                 <div class="col">
-                    <!-- <div class="content">
-                        <p> Achternaam: </p>
-                        <p> Adres: </p>
-                        <hr class="solid">
-                    </div> -->
-
                     <table>
                         <tr>
                             <th>ID</th>
@@ -50,24 +44,19 @@ $families = $statement->fetchAll(PDO::FETCH_OBJ);
                         <?php foreach ($families as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
-                                <td><?= $familie->achternaam; ?></td>
+                                <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
                                 <td><?= $familie->adres; ?></td>
-                                <td><button class="deteils-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
-                                    <button class="deteils-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delte</a></button>
+                                <td><button class="details-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
+                                    <button class="details-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delete</a></button>
+                                    <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
-
-
-
                 </div>
             </div>
         </div>
-
-
-</div>
-</main>
+    </main>
 </div>
 
 <?php include('components/footer.php') ?>
