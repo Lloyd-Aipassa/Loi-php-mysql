@@ -3,21 +3,23 @@ $pageTitle = 'Familie';
 
 include('config/db.php');
 
-$id = $_GET['id'];
+$id2 = $_GET['id'];
 $sql = "SELECT 
     a.achternaam,
     a.adres,
     b.id,
     b.naam,
     b.geboorteDatum,
-    b.lid_id
+    b.lid_id,
+    b.leeftijd,
+    b.soort_lid
     
     FROM 
     families AS a
     INNER JOIN familieleden AS b ON(a.id = b.lid_id)
     Where lid_id=:id";
 $statement = $conn->prepare($sql);
-$statement->execute([':id' => $id]);
+$statement->execute([':id' => $id2]);
 $families = $statement->fetchAll();
 // print_r($families)
 ?>
@@ -44,7 +46,7 @@ $families = $statement->fetchAll();
     <main class="main">
         <div class="center">
             <div class="row">
-                <button><a href="add-familie.php">Nieuwe familie</a></button>
+                <!-- <button><a href="add-familie.php">Nieuwe familie</a></button> -->
                 <div class="col">
                     <table>
                         <tr>
@@ -53,6 +55,8 @@ $families = $statement->fetchAll();
                             <th>Achternaam</th>
                             <th>Adres</th>
                             <th>Geboorte datum</th>
+                            <th>Leeftijd</th>
+                            <th>Soort lid</th>
                         </tr>
                         <?php foreach ($families as $familie) : ?>
                             <tr>
@@ -61,9 +65,11 @@ $families = $statement->fetchAll();
                                 <td><?= $familie->achternaam; ?></td>
                                 <td><?= $familie->adres; ?></td>
                                 <td><?= $familie->geboorteDatum; ?></td>
+                                <td><?= $familie->leeftijd; ?></td>
+                                <td><?= $familie->soort_lid; ?></td>
                                 <td><button class="details-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
                                     <button class="details-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delete</a></button>
-                                    <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button>
+                                    <!-- <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

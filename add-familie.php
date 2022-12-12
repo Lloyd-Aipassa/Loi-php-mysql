@@ -35,17 +35,11 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
         <section class="card-form">
             <H2>Voeg een familie toe</H2>
             <form action="add-familie.php" method="POST">
-           <?php echo $message ?>
-
+            <?php echo $message ?>
                 <label>achternaam</label>
                 <input type="text" name="achternaam" value="">
-
                 <label>Adres</label>
-
                 <input type="text" name="adres" value=''>
-
-
-
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>

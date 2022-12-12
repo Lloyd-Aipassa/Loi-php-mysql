@@ -30,9 +30,9 @@
         <li>
             <a href="index.php">Families</a>
         </li>
-        <li>
+        <!-- <li>
             <a href="familie.php">Familie</a>
-        </li>
+        </li> -->
         <li>
             <a href="familie-lid.php">familie lid</a>
         </li>

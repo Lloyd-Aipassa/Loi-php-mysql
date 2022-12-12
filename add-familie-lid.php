@@ -9,13 +9,22 @@ if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
     $naam = $_POST['naam'];
     $geboorteDatum = $_POST['geboorteDatum'];
     $lid_id = $_POST['lid_id'];
-    $sql = 'INSERT INTO familieleden(naam, geboorteDatum, lid_id) VALUES(:naam, :geboorteDatum, :lid_id)';
+    $sql = 'INSERT INTO familieleden(naam, geboorteDatum, lid_id) VALUES(:naam, :geboorteDatum, :lid_id); 
+            -- ******functie leeftijd******
+            UPDATE familieleden SET leeftijd = TIMESTAMPDIFF(YEAR, geboorteDatum, CURDATE());
+            -- ******functie soort lid******
+            UPDATE familieleden SET soort_lid = CASE 
+            WHEN leeftijd>=51 THEN \'Oudere\' 
+            WHEN leeftijd>=18 THEN \'senior\' 
+            WHEN leeftijd >=13 THEN \'junior\' 
+            WHEN leeftijd >=7 THEN \'aspirant\' 
+            ELSE \'jeugd\' END;
+            ';
     $statement = $conn->prepare($sql);
     if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':lid_id' => $lid_id])) {
         header("location: index.php");
     }
 }
-
 ?>
 
 

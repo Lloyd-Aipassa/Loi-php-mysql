@@ -16,21 +16,23 @@ a {
 	font-family: "Poppins", sans-serif;
 }
 
-table, th, td {
+table,
+th,
+td {
 	border: 1px solid;
-  }
+}
 table {
 	width: 100%;
 	border-collapse: collapse;
-  }
+}
 
-  td{
+td {
 	padding: 10px;
 	text-align: center;
-  }
-  th{
+}
+th {
 	padding: 5px;
-  }
+}
 
 .grid-container {
 	position: relative;
@@ -51,8 +53,6 @@ footer ul {
 }
 
 aside {
-	/* background-color: #ff8364;
-	padding: 0 50px; */
 	position: absolute;
 	padding-left: 100px;
 	width: 20%;
@@ -73,28 +73,24 @@ aside {
 }
 
 main {
-	/* height: 100%; */
 	color: white;
-	/* background: linear-gradient(
-		310deg,
-		rgba(33, 33, 33, 0.9) 0%,
-		rgba(14, 14, 14, 1) 100%); */
-		background-color:rgba(33, 33, 33, 1);
+	background-color: rgba(33, 33, 33, 1);
 	width: 100%;
-	padding: 50px;
-	
+	padding: 50px 50px 50px 100px;
 }
 
 main button {
 	/* margin: 0 30%; */
 	padding: 15px;
-	background-color: coral;
+	background-color: #00a36c;
 	color: #fff !important;
 	border-radius: 8px;
 	cursor: pointer;
 	font-size: 18px;
 	text-transform: uppercase;
 	margin: 20px 0 30px 0;
+	border: 0px solid #00a36c;
+	border-bottom: 5px solid #005236;
 }
 button.details-fam {
 	/* margin: 0 30%; */
@@ -108,8 +104,8 @@ button.details-fam {
 	margin: 0px 0 0px 0;
 }
 
-.fam-kleur{
-	background-color: green!important;
+.fam-kleur {
+	background-color: #00a36c !important;
 }
 
 main button a {
@@ -120,7 +116,6 @@ main a {
 }
 
 .center {
-	/* height: 100%; */
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -130,7 +125,7 @@ main a {
 
 .row {
 	width: 100%;
-	max-width: 800px;
+	max-width: 850px;
 	border-radius: 8px;
 	padding: 20px;
 	background-image: linear-gradient(
