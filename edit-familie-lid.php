@@ -1,47 +1,49 @@
 <?php
-$pageTitle = 'Add familie';
+$pageTitle = 'Familie aanpassen';
+?>
+
+<?php
 
 include('config/db.php');
 
+//Pak ID uit superglobal met GET method
+$id = $_GET['id'];
 
+$sql = 'SELECT * FROM familieleden Where id=:id';
+$statement = $conn->prepare($sql);
+$statement->execute([':id' => $id]);
+$familielid = $statement->fetch(PDO::FETCH_OBJ);
 
-if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
+if (isset($_POST['naam']) && ($_POST['geboorteDatum'])) {
     $naam = $_POST['naam'];
     $geboorteDatum = $_POST['geboorteDatum'];
-    $lid_id = $_POST['lid_id'];
-    $sql = 'INSERT INTO familieleden(naam, geboorteDatum, lid_id) VALUES(:naam, :geboorteDatum, :lid_id); 
+    $sql = 'UPDATE familieleden SET naam=:naam, geboorteDatum=:geboorteDatum WHERE id=:id;
+    
+    -- ******functie leeftijd******
+UPDATE familieleden SET leeftijd = TIMESTAMPDIFF(YEAR, geboorteDatum, CURDATE()) WHERE id=:id;
 
-            -- ******functie leeftijd******
-            UPDATE familieleden SET leeftijd = TIMESTAMPDIFF(YEAR, geboorteDatum, CURDATE());
+-- ******mutatie voor soort lid******
+UPDATE familieleden SET soort_id = CASE
+WHEN leeftijd>=51 THEN \'5\'
+WHEN leeftijd>=18 THEN \'4\'
+WHEN leeftijd >=13 THEN \'3\'
+WHEN leeftijd >=7 THEN \'2\'
+ELSE \'1\' END WHERE id=:id;
 
-            -- ******mutatie soort lid zonder extra database******
-            -- UPDATE familieleden SET soort_lid = CASE 
-            -- WHEN leeftijd>=51 THEN \'Oudere\' 
-            -- WHEN leeftijd>=18 THEN \'senior\' 
-            -- WHEN leeftijd >=13 THEN \'junior\' 
-            -- WHEN leeftijd >=7 THEN \'aspirant\' 
-            -- ELSE \'jeugd\' END;
+-- ******mutatie voor contributie******
+UPDATE familieleden SET contributie_id = soort_id WHERE id=:id;
+UPDATE familieleden SET betaald = contributie_id WHERE id=:id;
+    ';
 
-            -- ******mutatie voor soort lid******
-            UPDATE familieleden SET soort_id = CASE 
-            WHEN leeftijd>=51 THEN \'5\' 
-            WHEN leeftijd>=18 THEN \'4\' 
-            WHEN leeftijd >=13 THEN \'3\' 
-            WHEN leeftijd >=7 THEN \'2\' 
-            ELSE \'1\' END ORDER BY id DESC LIMIT 1;
-
-            -- ******mutatie voor contributie****** 
-            UPDATE familieleden SET contributie_id = soort_id;
-            UPDATE familieleden SET betaald = contributie_id;
-            ';
     $statement = $conn->prepare($sql);
-    if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':lid_id' => $lid_id])) {
-        header("location: index.php");
+    if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':id' => $id])) {
+         header("location: index.php");
     }
 }
+
+
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -61,18 +63,22 @@ if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
     </aside>
     <main class="main">
         <section class="card-form">
-            <H2>Voeg een familie lid toe</H2>
-            <form action="add-familie-lid.php" method="POST">
+            <H2>Familie aanpassen</H2>
+            <form method="POST">
                 <label>Voornaam</label>
-                <input type="text" name="naam" value="">
+            
+                <input type="text" name="naam" value="<?= $familielid->naam; ?>">
                 <label>Geboortedatum</label>
-                <input type="date" name="geboorteDatum" value=''>
-                <input type="hidden" name="lid_id" value='<?= $_GET['id']; ?>'>
+          
+                <input type="date" name="geboorteDatum" value="<?= $familielid->geboorteDatum; ?>">
+
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>
     </main>
 </div>
+
+
 
 
 
@@ -132,9 +138,5 @@ if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
         border-bottom: 1px solid #fff;
         background-color: #ffffff00;
         color: #fff;
-    }
-
-    input:focus-visible {
-        outline: none;
     }
 </style>

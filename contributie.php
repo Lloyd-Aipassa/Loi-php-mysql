@@ -1,19 +1,15 @@
 <?php
 $pageTitle = 'Contributie';
-
-// include('config/db.php');
-// if (isset($_POST['naam']) && ($_POST['geboorteDatum']) && ($_POST['lid_id'])) {
-//     $naam = $_POST['naam'];
-//     $geboorteDatum = $_POST['geboorteDatum'];
-//     $lid_id = $_POST['lid_id'];
-//     $sql = 'INSERT INTO familieleden(naam, geboorteDatum, lid_id) VALUES(:naam, :geboorteDatum, :lid_id)';
-//     $statement = $conn->prepare($sql);
-//     if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':lid_id' => $lid_id])) {
-//         header("location: index.php");
-//     }
-// }
-
+include('config/db.php');
+$sql = "SELECT a.naam, a.leeftijd, a.id, b.bedrag FROM familieleden AS a LEFT JOIN contributie AS b ON a.contributie_id = b.id;
+";
+$statement = $conn->prepare($sql);
+$statement->execute();
+$soortleden = $statement->fetchAll();
+// print_r($soortleden);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -22,7 +18,7 @@ $pageTitle = 'Contributie';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title><?php $pageTitle ?></title>
+    <title><?php $pageTitle; ?></title>
 </head>
 
 <?php include('components/header.php') ?>
@@ -33,24 +29,28 @@ $pageTitle = 'Contributie';
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
-        <?php
-        $birthDate = "17-10-1998";
-        $currentDate = date("d-m-Y");
-        $age = date_diff(date_create($birthDate), date_create($currentDate));
-        echo "Current age is " . $age->format("%y");
-        ?>
-
-        <section class="card-form">
-            <H2>Voeg een familie lid toe</H2>
-            <form  method="POST">
-                <label>Voornaam</label>
-                <input type="text" name="naam" value="">
-                <label>Geboortedatum</label>
-                <input type="date" name="geboorteDatum" value=''>
-                <input type="hidden" name="lid_id" value='<?= $_GET['id']; ?>'>
-                <button type="submit" value="submit" name="submit">voeg toe</button>
-            </form>
-        </section>
+        <div class="center">
+            <div class="row">
+                <div class="col">
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>Naam</th>
+                            <th>Leeftijd</th>
+                            <th>bedrag</th>
+                        </tr>
+                        <?php foreach ($soortleden as $lid) : ?>
+                            <tr>
+                                <td><?= $lid->id; ?></td>
+                                <td><?= $lid->naam; ?></td>
+                                <td><?= $lid->leeftijd; ?></td>
+                                <td><?= $lid->bedrag; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 

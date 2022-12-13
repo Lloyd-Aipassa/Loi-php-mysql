@@ -92,7 +92,9 @@ main button {
 	border: 0px solid #00a36c;
 	border-bottom: 5px solid #005236;
 }
-button.details-fam {
+button.details-fam,
+button.details-fam2, 
+button.details-fam3 {
 	/* margin: 0 30%; */
 	padding: 15px;
 	background-color: coral;
@@ -102,6 +104,15 @@ button.details-fam {
 	font-size: 10px;
 	text-transform: uppercase;
 	margin: 0px 0 0px 0;
+	border-bottom: 5px solid rgb(226, 77, 22);
+}
+button.details-fam2 {
+	background-color: #dc143c;
+	border-bottom: 5px solid #a80c2b;
+}
+button.details-fam3 {
+	background-color: #00a36c;
+	border-bottom: 5px solid #005236;
 }
 
 .fam-kleur {

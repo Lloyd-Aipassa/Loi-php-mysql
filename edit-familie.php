@@ -14,15 +14,15 @@ $statement = $conn->prepare($sql);
 $statement->execute([':id' => $id]);
 $familie = $statement->fetch(PDO::FETCH_OBJ);
 
-
-$message = '';
+// $message = '';
 if (isset($_POST['achternaam']) && ($_POST['adres'])) {
     $achternaam = $_POST['achternaam'];
     $adres = $_POST['adres'];
     $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
     $statement = $conn->prepare($sql);
     if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
-        header("location: index.php");
+        // header("location: index.php");
+        print_r($id);
     }
 }
 
@@ -50,7 +50,7 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
         <section class="card-form">
             <H2>Familie aanpassen</H2>
             <form method="POST">
-                <?php echo $message ?>
+                <!-- <?php echo $message ?> -->
                 <label>achternaam</label>
                 <input type="text" value="<?= $familie->achternaam; ?>" name="achternaam" value="">
                 <label>Adres</label>

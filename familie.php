@@ -33,7 +33,7 @@ $families = $statement->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title><?php $pageTitle;?></title>
+    <title><?php $pageTitle; ?></title>
 </head>
 
 <?php include('components/header.php') ?>
@@ -47,7 +47,7 @@ $families = $statement->fetchAll();
         <div class="center">
             <div class="row">
                 <!-- <button><a href="add-familie.php">Nieuwe familie</a></button> -->
-                <div class="col">
+                <div class="col" style="overflow-x:auto;">
                     <table>
                         <tr>
                             <th>ID</th>
@@ -67,8 +67,8 @@ $families = $statement->fetchAll();
                                 <td><?= $familie->geboorteDatum; ?></td>
                                 <td><?= $familie->leeftijd; ?></td>
                                 <td><?= $familie->soort_lid; ?></td>
-                                <td><button class="details-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
-                                    <button class="details-fam"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delete</a></button>
+                                <td><button class="details-fam"><a href="edit-familie-lid.php?id=<?= $familie->id ?>">edit</a></button>
+                                    <button class="details-fam2"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>">delete</a></button>
                                     <!-- <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button> -->
                                 </td>
                             </tr>
