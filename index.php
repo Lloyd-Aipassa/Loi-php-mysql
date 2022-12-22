@@ -1,16 +1,9 @@
 <?php
 $pageTitle = 'Families';
+include('class/test.php');
+$familiesObj = new Test();
 ?>
 
-<?php
-
-include('config/db.php');
-
-$sql = 'SELECT * FROM families';
-$statement = $conn->prepare($sql);
-$statement->execute();
-$families = $statement->fetchAll();
-?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -33,7 +26,7 @@ $families = $statement->fetchAll();
     <main class="main">
         <div class="center">
             <div class="row">
-                <button><a href="add-familie.php">Nieuwe familie</a></button>
+                <a href="add-familie.php"><button class="add-fam">Voeg een nieuwe familie toe</button></a>
                 <div class="col">
                     <table>
                         <tr>
@@ -41,14 +34,14 @@ $families = $statement->fetchAll();
                             <th>Achternaam</th>
                             <th>Adres</th>
                         </tr>
-                        <?php foreach ($families as $familie) : ?>
+                        <?php foreach ($familiesObj ->getFamilies() as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
                                 <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
                                 <td><?= $familie->adres; ?></td>
-                                <td><button class="details-fam"><a href="edit-familie.php?id=<?= $familie->id ?>">edit</a></button>
-                                    <button class="details-fam2"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>">delete</a></button>
-                                    <button class="details-fam3 fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button>
+                                <td><a href="edit-familie.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
+                                    <a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>"> <button class="details-fam2">delete</button></a>
+                                    <a href="add-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Nieuw lid</button></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

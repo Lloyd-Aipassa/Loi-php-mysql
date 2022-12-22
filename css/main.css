@@ -79,8 +79,7 @@ main {
 	padding: 50px 50px 50px 100px;
 }
 
-main button {
-	/* margin: 0 30%; */
+button.add-fam {
 	padding: 15px;
 	background-color: #00a36c;
 	color: #fff !important;
@@ -93,7 +92,7 @@ main button {
 	border-bottom: 5px solid #005236;
 }
 button.details-fam,
-button.details-fam2, 
+button.details-fam2,
 button.details-fam3 {
 	/* margin: 0 30%; */
 	padding: 15px;
@@ -134,9 +133,27 @@ main a {
 	justify-content: center;
 }
 
-.row {
+.col {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	margin: 0 0 20px 0;
 	width: 100%;
-	max-width: 850px;
+	border-radius: 8px;
+	height: 100%;
+}
+
+.fam-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 1000px;
 	border-radius: 8px;
 	padding: 20px;
 	background-image: linear-gradient(
@@ -151,15 +168,8 @@ main a {
 		rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.col {
-	display: flex;
-	align-items: center;
-	padding: 10px;
-	margin: 0 0 20px 0;
-	width: 100%;
-	border-radius: 8px;
-	height: 100%;
-}
+
+
 
 @media screen and (max-width: 600px) {
 	.grid-container {

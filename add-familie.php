@@ -1,19 +1,11 @@
 <?php
-$pageTitle = 'Add familie';
+$pageTitle = '';
 
-include('config/db.php');
-$message = '';
-if (isset($_POST['achternaam']) && ($_POST['adres'])) {
-    $achternaam = $_POST['achternaam'];
-    $adres = $_POST['adres'];
-    $sql = 'INSERT INTO families(achternaam, adres) VALUES(:achternaam, :adres)';
-    $statement = $conn->prepare($sql);
-    if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres])) {
-        $message = 'Familie toegevoegd';
-    }
-}
-
+include('class/test.php');
+$addFamilieObj = new Test();
+$addFamilieObj -> setFamilies();
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -35,7 +27,6 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
         <section class="card-form">
             <H2>Voeg een familie toe</H2>
             <form action="add-familie.php" method="POST">
-            <?php echo $message ?>
                 <label>achternaam</label>
                 <input type="text" name="achternaam" value="">
                 <label>Adres</label>
@@ -45,8 +36,6 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
         </section>
     </main>
 </div>
-
-
 
 <?php include('components/footer.php') ?>
 

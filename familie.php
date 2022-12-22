@@ -1,29 +1,8 @@
 <?php
-$pageTitle = 'Familie';
-
-include('config/db.php');
-
-$id2 = $_GET['id'];
-$sql = "SELECT 
-    a.achternaam,
-    a.adres,
-    b.id,
-    b.naam,
-    b.geboorteDatum,
-    b.lid_id,
-    b.leeftijd,
-    b.soort_lid
-    
-    FROM 
-    families AS a
-    INNER JOIN familieleden AS b ON(a.id = b.lid_id)
-    Where lid_id=:id";
-$statement = $conn->prepare($sql);
-$statement->execute([':id' => $id2]);
-$families = $statement->fetchAll();
-// print_r($families)
+    $pageTitle = 'Familie';
+    include('class/test.php');
+    $familieObj = new Test();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -38,7 +17,6 @@ $families = $statement->fetchAll();
 
 <?php include('components/header.php') ?>
 
-
 <div class="grid-container">
     <aside>
         <?php include('components/nav.php') ?>
@@ -46,8 +24,7 @@ $families = $statement->fetchAll();
     <main class="main">
         <div class="center">
             <div class="row">
-                <!-- <button><a href="add-familie.php">Nieuwe familie</a></button> -->
-                <div class="col" style="overflow-x:auto;">
+                <div class="col fam-col" style="overflow-x:auto;">
                     <table>
                         <tr>
                             <th>ID</th>
@@ -57,8 +34,9 @@ $families = $statement->fetchAll();
                             <th>Geboorte datum</th>
                             <th>Leeftijd</th>
                             <th>Soort lid</th>
+                            <th>Contributie</th>
                         </tr>
-                        <?php foreach ($families as $familie) : ?>
+                        <?php foreach ($familieObj->getFamilie() as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
                                 <td><?= $familie->naam; ?></td>
@@ -67,13 +45,22 @@ $families = $statement->fetchAll();
                                 <td><?= $familie->geboorteDatum; ?></td>
                                 <td><?= $familie->leeftijd; ?></td>
                                 <td><?= $familie->soort_lid; ?></td>
-                                <td><button class="details-fam"><a href="edit-familie-lid.php?id=<?= $familie->id ?>">edit</a></button>
-                                    <button class="details-fam2"><a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>">delete</a></button>
-                                    <!-- <button class="details-fam fam-kleur"><a href="add-familie-lid.php?id=<?= $familie->id ?>">Nieuw lid</a></button> -->
+                                <td><?= $familie->bedrag; ?></td>
+                                <td><a href="edit-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
+                                    <a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam2">delete</button></a>
+                                    <a href="contributie-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Betalen</button></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
+                    <?php foreach ($familieObj->getContibutieTotaal() as $contributieTotaal) : ?>
+                        <table>
+                            <tr>
+                                <th>contributie totaal: </th>
+                                <th>€ <?= $contributieTotaal->totaal; ?>,- </th>
+                            </tr>
+                        </table>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

@@ -1,12 +1,7 @@
 <?php
 $pageTitle = 'Contributie';
-include('config/db.php');
-$sql = "SELECT a.naam, a.leeftijd, a.id, b.bedrag FROM familieleden AS a LEFT JOIN contributie AS b ON a.contributie_id = b.id;
-";
-$statement = $conn->prepare($sql);
-$statement->execute();
-$soortleden = $statement->fetchAll();
-// print_r($soortleden);
+include('class/test.php');
+$contributieObj = new Test();
 ?>
 
 
@@ -23,6 +18,7 @@ $soortleden = $statement->fetchAll();
 
 <?php include('components/header.php') ?>
 
+<button onclick="history.go(-1)">Go Back 2 Pages</button>
 
 <div class="grid-container">
     <aside>
@@ -39,7 +35,7 @@ $soortleden = $statement->fetchAll();
                             <th>Leeftijd</th>
                             <th>bedrag</th>
                         </tr>
-                        <?php foreach ($soortleden as $lid) : ?>
+                        <?php foreach ($contributieObj->getContributie() as $lid) : ?>
                             <tr>
                                 <td><?= $lid->id; ?></td>
                                 <td><?= $lid->naam; ?></td>

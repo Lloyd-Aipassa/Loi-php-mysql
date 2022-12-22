@@ -1,34 +1,11 @@
 <?php
 $pageTitle = 'Familie aanpassen';
+
+include('class/test.php');
+$editFamObj = new Test();
+$editFamObj-> editFam();
 ?>
 
-<?php
-
-include('config/db.php');
-
-//Pak ID uit superglobal met GET method
-$id = $_GET['id'];
-
-$sql = 'SELECT * FROM families Where id=:id';
-$statement = $conn->prepare($sql);
-$statement->execute([':id' => $id]);
-$familie = $statement->fetch(PDO::FETCH_OBJ);
-
-// $message = '';
-if (isset($_POST['achternaam']) && ($_POST['adres'])) {
-    $achternaam = $_POST['achternaam'];
-    $adres = $_POST['adres'];
-    $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
-    $statement = $conn->prepare($sql);
-    if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
-        // header("location: index.php");
-        print_r($id);
-    }
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -52,9 +29,9 @@ if (isset($_POST['achternaam']) && ($_POST['adres'])) {
             <form method="POST">
                 <!-- <?php echo $message ?> -->
                 <label>achternaam</label>
-                <input type="text" value="<?= $familie->achternaam; ?>" name="achternaam" value="">
+                <input type="text" value="<?= $editFamObj->getFam()->achternaam; ?>" name="achternaam" value="">
                 <label>Adres</label>
-                <input type="text" value="<?= $familie->adres; ?>" name="adres" value=''>
+                <input type="text" value="<?= $editFamObj->getFam()->adres; ?>" name="adres" value=''>
                 <button type="submit" value="submit" name="submit">Update familie</button>
             </form>
         </section>

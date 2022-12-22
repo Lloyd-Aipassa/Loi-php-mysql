@@ -1,48 +1,9 @@
 <?php
-$pageTitle = 'Familie aanpassen';
-?>
+$pageTitle = '';
 
-<?php
-
-include('config/db.php');
-
-//Pak ID uit superglobal met GET method
-$id = $_GET['id'];
-
-$sql = 'SELECT * FROM familieleden Where id=:id';
-$statement = $conn->prepare($sql);
-$statement->execute([':id' => $id]);
-$familielid = $statement->fetch(PDO::FETCH_OBJ);
-
-if (isset($_POST['naam']) && ($_POST['geboorteDatum'])) {
-    $naam = $_POST['naam'];
-    $geboorteDatum = $_POST['geboorteDatum'];
-    $sql = 'UPDATE familieleden SET naam=:naam, geboorteDatum=:geboorteDatum WHERE id=:id;
-    
-    -- ******functie leeftijd******
-UPDATE familieleden SET leeftijd = TIMESTAMPDIFF(YEAR, geboorteDatum, CURDATE()) WHERE id=:id;
-
--- ******mutatie voor soort lid******
-UPDATE familieleden SET soort_id = CASE
-WHEN leeftijd>=51 THEN \'5\'
-WHEN leeftijd>=18 THEN \'4\'
-WHEN leeftijd >=13 THEN \'3\'
-WHEN leeftijd >=7 THEN \'2\'
-ELSE \'1\' END WHERE id=:id;
-
--- ******mutatie voor contributie******
-UPDATE familieleden SET contributie_id = soort_id WHERE id=:id;
-UPDATE familieleden SET betaald = contributie_id WHERE id=:id;
-    ';
-
-    $statement = $conn->prepare($sql);
-    if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':id' => $id])) {
-         header("location: index.php");
-    }
-}
-
-
-
+include('class/test.php');
+$editLidObj = new Test();
+$editLidObj-> editFamilieLid();
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -63,24 +24,20 @@ UPDATE familieleden SET betaald = contributie_id WHERE id=:id;
     </aside>
     <main class="main">
         <section class="card-form">
-            <H2>Familie aanpassen</H2>
+            <H2>Familie lid aanpassen</H2>
             <form method="POST">
                 <label>Voornaam</label>
-            
-                <input type="text" name="naam" value="<?= $familielid->naam; ?>">
+
+                <input type="text" name="naam" value="<?= $editLidObj->getFamilieLid()->naam; ?>">
                 <label>Geboortedatum</label>
-          
-                <input type="date" name="geboorteDatum" value="<?= $familielid->geboorteDatum; ?>">
+
+                <input type="date" name="geboorteDatum" value="<?= $editLidObj->getFamilieLid()->geboorteDatum; ?>">
 
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>
     </main>
 </div>
-
-
-
-
 
 <?php include('components/footer.php') ?>
 

@@ -1,14 +1,8 @@
 <?php
 $pageTitle = 'Soort lid';
-include('config/db.php');
-$sql = "SELECT a.naam, a.leeftijd, a.id, b.soort_lid FROM familieleden AS a LEFT JOIN soortleden AS b ON a.soort_id = b.id;
-";
-$statement = $conn->prepare($sql);
-$statement->execute();
-$soortleden = $statement->fetchAll();
-// print_r($soortleden);
+include('class/test.php');
+$soortLidObj = new Test();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -39,7 +33,7 @@ $soortleden = $statement->fetchAll();
                             <th>Leeftijd</th>
                             <th>soort lid</th>
                         </tr>
-                        <?php foreach ($soortleden as $lid) : ?>
+                        <?php foreach ($soortLidObj ->getSoortLeden() as $lid) : ?>
                             <tr>
                                 <td><?= $lid->id; ?></td>
                                 <td><?= $lid->naam; ?></td>

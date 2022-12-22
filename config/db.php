@@ -1,18 +1,14 @@
 <?php
 
-// $conn = mysqli_connect('localhost', 'lloyd', 'lloyd123', 'lloyd');
-
-// $conn = mysqli_connect('loi.brooklynwebdesign.nl', 'lloyd', 'L249m66a', 'lloyd');
-
-// $dsn = 'mysql:=localhost; dbname=lloyd';
-// $username = 'lloyd';
-// $password = 'lloyd123';
-// $options = [];
-
-$dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
+$dsn = 'mysql:=localhost; dbname=lloyd';
 $username = 'lloyd';
-$password = 'L249m66a';
+$password = 'lloyd123';
 $options = [];
+
+// $dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
+// $username = 'lloyd';
+// $password = 'L249m66a';
+// $options = [];
 
 try {
     $conn = new PDO($dsn, $username, $password, $options);
