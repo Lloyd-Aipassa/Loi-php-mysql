@@ -1,5 +1,9 @@
 <?php
 
+// $dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
+// $username = 'lloyd';
+// $password = 'L249m66a';
+// $options = [];
 
 // ***********Class voor Databse connevtie connectie*************
 

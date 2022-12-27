@@ -49,6 +49,12 @@
 </style>
 
 <body>
+<?php
+session_start();
+    if (!isset($_SESSION["loggedIn"])){
+        header("location:login.php");
+    }
+	?>
 
 	<header>
 		<button class="ham-btn"> <img src="img/menu-icon.svg" alt="">

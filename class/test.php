@@ -176,20 +176,20 @@ class Test extends Dbh
 
 
 
-    // public function editFam()
-    // {
-    //     //Pak ID uit superglobal met GET method
-    //     $id = $_GET['id'];
-    //     if (isset($_POST['achternaam']) && ($_POST['adres'])) {
-    //         $achternaam = $_POST['achternaam'];
-    //         $adres = $_POST['adres'];
-    //         $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
-    //         $statement = $this->connect()->prepare($sql);
-    //         if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
-    //             header("location: index.php");
-    //         }
-    //     }
-    // }
+    public function editFam()
+    {
+        //Pak ID uit superglobal met GET method
+        $id = $_GET['id'];
+        if (isset($_POST['achternaam']) && ($_POST['adres'])) {
+            $achternaam = $_POST['achternaam'];
+            $adres = $_POST['adres'];
+            $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
+            $statement = $this->connect()->prepare($sql);
+            if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
+                header("location: index.php");
+            }
+        }
+    }
     // ***********EIND samen****************
 
     // public function getSoortLeden()

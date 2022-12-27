@@ -1,4 +1,5 @@
 <?php
+
 $pageTitle = 'Families';
 include('view/class.view.families.php');
 $familiesObj = new FamiliesView();

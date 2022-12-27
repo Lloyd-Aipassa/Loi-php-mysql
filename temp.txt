@@ -1,9 +1,136 @@
 <?php
-$pageTitle = '';
 
-include('view/class.view.editFamilieLid.php');
-include('controller/class.contr.editFamilieLid.php');
-$editLidObj = new editFamilieLidView();
-$editLidObj2 = new editFamilieLidContr();
-$editLidObj2->updateFamilieLid();
+$dsn = 'mysql:=localhost; dbname=lloyd';
+$username = 'lloyd';
+$password = 'lloyd123';
+$options = [];
+
+// $dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
+// $username = 'lloyd';
+// $password = 'L249m66a';
+// $options = [];
+
+try {
+    $conn = new PDO($dsn, $username, $password, $options);
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); // zet een defealt fetch 
+
+} catch(PDOException $e) { 
+} 
+
+<?php
+$pageTitle = 'Login';
+session_start();
+include('config/db.php');
+$veldLeeg = $veldOnjuist = "";
+if (isset($_POST["submit"])) {
+    if ($_POST["gebruikers_naam"] === "" or ["wachtwoord"] === "") {
+        $veldLeeg = "Vul alle velden in...";
+    } else {
+        $gebruikers_naam = (trim($_POST["gebruikers_naam"]));
+        $wachtwoord = (trim($_POST["wachtwoord"]));
+        $sql = "SELECT * FROM gebruiker WHERE :gebruikers_naam = gebruikers_naam AND :wachtwoord = wachtwoord";
+        $statement = $conn->prepare($sql);
+        $statement->execute([':gebruikers_naam' => $gebruikers_naam, ':wachtwoord' => $wachtwoord]);
+        $controleer = $statement->fetch();
+        if ($controleer > 0) {
+            $_SESSION["loggedIn"] = $gebruikers_naam;
+            header("location:families.php");
+        }
+        $veldOnjuist = "Je gebruikersnaam of wachtwoord is incorrect...";
+    }
+}
 ?>
+
+
+<!DOCTYPE html>
+<html lang="nl">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title><?php $pageTitle ?></title>
+</head>
+
+
+
+
+<div class="grid-container">
+    <aside>
+        <?php include('components/nav.php') ?>
+    </aside>
+    <main class="main">
+        <section class="card-form">
+            <H2><?php echo $veldLeeg; ?></H2>
+            <H2><?php echo $veldOnjuist; ?></H2>
+            <form method="POST">
+                <label>Gebruikersnaam</label>
+                <input type="text" name="gebruikers_naam" value="">
+                <label>Wachtwoord</label>
+                <input type="text" name="wachtwoord" value=''>
+                <button type="submit" name="submit">Log in</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+<?php include('components/footer.php') ?>
+
+
+</html>
+
+<style>
+    section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #fff;
+        padding: 20px;
+        border-radius: 8px;
+        min-height: 400px;
+    }
+
+    form p {
+        color: red;
+        margin-bottom: 20px;
+    }
+
+    form button {
+        margin: 0 30%;
+        padding: 20px;
+        background-color: coral;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-top: 50px;
+    }
+
+    input {
+        padding: 10px;
+        margin: 20px 0;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: #ffffff00;
+        color: #fff;
+    }
+</style>

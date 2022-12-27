@@ -1,5 +1,5 @@
 <?php
-include('class/class.db.php');
+include('config/class.db.php');
 
 class FamilieLidModel extends Dbh
 {
