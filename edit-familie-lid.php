@@ -1,9 +1,11 @@
 <?php
 $pageTitle = '';
 
-include('class/test.php');
-$editLidObj = new Test();
-$editLidObj-> editFamilieLid();
+// include('view/class.view.editFamilieLid.php');
+include('controller/class.contr.editFamilieLid.php');
+// $editLidObj = new editFamilieLidView();
+$editLidObj = new editFamilieLidContr();
+$editLidObj->updateFamilieLid();
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -27,11 +29,9 @@ $editLidObj-> editFamilieLid();
             <H2>Familie lid aanpassen</H2>
             <form method="POST">
                 <label>Voornaam</label>
-
-                <input type="text" name="naam" value="<?= $editLidObj->getFamilieLid()->naam; ?>">
+                <input type="text" name="naam" value="<?= $editLidObj->showEditFamilieLid()->naam; ?>">
                 <label>Geboortedatum</label>
-
-                <input type="date" name="geboorteDatum" value="<?= $editLidObj->getFamilieLid()->geboorteDatum; ?>">
+                <input type="date" name="geboorteDatum" value="<?= $editLidObj->showEditFamilieLid()->geboorteDatum; ?>">
 
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>

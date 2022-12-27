@@ -1,7 +1,8 @@
 <?php
 $pageTitle = 'Contributie';
-include('class/test.php');
-$contributieObj = new Test();
+
+include('view/class.view.contributie.php');
+$contributieObj = new ContributieView();
 ?>
 
 
@@ -35,7 +36,7 @@ $contributieObj = new Test();
                             <th>Leeftijd</th>
                             <th>bedrag</th>
                         </tr>
-                        <?php foreach ($contributieObj->getContributie() as $lid) : ?>
+                        <?php foreach ($contributieObj->showContributie() as $lid) : ?>
                             <tr>
                                 <td><?= $lid->id; ?></td>
                                 <td><?= $lid->naam; ?></td>

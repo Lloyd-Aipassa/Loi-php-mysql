@@ -1,9 +1,9 @@
 <?php
 $pageTitle = '';
 
-include('class/test.php');
-$addFamilieObj = new Test();
-$addFamilieObj -> setFamilies();
+include('controller/class.contr.families.php');
+$addFamilieObj = new FamiliesContr();
+$addFamilieObj -> CreateFamilies();
 ?>
 
 <!DOCTYPE html>

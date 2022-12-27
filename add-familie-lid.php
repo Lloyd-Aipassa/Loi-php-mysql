@@ -1,10 +1,9 @@
 <?php
 $pageTitle = '';
 
-include('class/test.php');
-$addFamilieObj = new Test();
-$addFamilieObj -> setFamilieLid();
-
+include('controller/class.contr.familieLid.php');
+$addFamilieObj = new FamilieLidContr();
+$addFamilieObj -> CreateFamilieLid();
 ?>
 
 

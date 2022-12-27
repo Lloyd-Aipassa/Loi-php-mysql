@@ -1,5 +1,5 @@
 <?php
 
-include('class/test.php');
-$deleteFamObj = new Test();
-$deleteFamObj->deleteFamilie();
+include('controller/class.contr.deleteFamilie.php');
+$deleteFamObj = new DeleteFamilieContr();
+$deleteFamObj->removeFamilie();

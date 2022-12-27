@@ -1,7 +1,7 @@
 <?php
     $pageTitle = 'Familie';
-    include('class/test.php');
-    $familieObj = new Test();
+    include('view/class.view.familie.php');
+    $familieObj = new FamilieView();
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@
                             <th>Soort lid</th>
                             <th>Contributie</th>
                         </tr>
-                        <?php foreach ($familieObj->getFamilie() as $familie) : ?>
+                        <?php foreach ($familieObj->showFamilie() as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
                                 <td><?= $familie->naam; ?></td>
@@ -53,7 +53,7 @@
                             </tr>
                         <?php endforeach; ?>
                     </table>
-                    <?php foreach ($familieObj->getContibutieTotaal() as $contributieTotaal) : ?>
+                    <?php foreach ($familieObj->showContibutieTotaal() as $contributieTotaal) : ?>
                         <table>
                             <tr>
                                 <th>contributie totaal: </th>

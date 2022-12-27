@@ -1,8 +1,8 @@
 <?php
 $pageTitle = 'Boekjaar';
 
-include('class/test.php');
-$boekjaarObj = new Test();
+include('view/class.view.boekjaar.php');
+$boekjaarObj = new BoekjaarView();
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ $boekjaarObj = new Test();
                      
                         </tr>
                         
-                        <?php foreach ($boekjaarObj ->getboekjaar() as $contributieTotaal) : ?>
+                        <?php foreach ($boekjaarObj ->ShowBoekjaar() as $contributieTotaal) : ?>
                             <tr>
                                 <td><?= $contributieTotaal->id; ?></td>
                                 <td><?= $contributieTotaal->achternaam; ?></td>

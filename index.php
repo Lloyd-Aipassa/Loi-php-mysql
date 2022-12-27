@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Families';
-include('class/test.php');
-$familiesObj = new Test();
+include('view/class.view.families.php');
+$familiesObj = new FamiliesView();
 ?>
 
 
@@ -34,7 +34,7 @@ $familiesObj = new Test();
                             <th>Achternaam</th>
                             <th>Adres</th>
                         </tr>
-                        <?php foreach ($familiesObj ->getFamilies() as $familie) : ?>
+                        <?php foreach ($familiesObj->ShowFamilies() as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
                                 <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>

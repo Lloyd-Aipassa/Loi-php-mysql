@@ -1,9 +1,10 @@
 <?php
 $pageTitle = 'Familie aanpassen';
 
-include('class/test.php');
-$editFamObj = new Test();
-$editFamObj-> editFam();
+
+include('controller/class.contr.editFamilie.php');
+$editFamObj = new editFamilieContr();
+$editFamObj->updateFam();
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +30,9 @@ $editFamObj-> editFam();
             <form method="POST">
                 <!-- <?php echo $message ?> -->
                 <label>achternaam</label>
-                <input type="text" value="<?= $editFamObj->getFam()->achternaam; ?>" name="achternaam" value="">
+                <input type="text" value="<?= $editFamObj->showFam()->achternaam; ?>" name="achternaam" value="">
                 <label>Adres</label>
-                <input type="text" value="<?= $editFamObj->getFam()->adres; ?>" name="adres" value=''>
+                <input type="text" value="<?= $editFamObj->showFam()->adres; ?>" name="adres" value=''>
                 <button type="submit" value="submit" name="submit">Update familie</button>
             </form>
         </section>

@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Soort lid';
-include('class/test.php');
-$soortLidObj = new Test();
+include('view/class.view.soortleden.php');
+$soortLidObj = new SoortLedenView();
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ $soortLidObj = new Test();
                             <th>Leeftijd</th>
                             <th>soort lid</th>
                         </tr>
-                        <?php foreach ($soortLidObj ->getSoortLeden() as $lid) : ?>
+                        <?php foreach ($soortLidObj ->showSoortLeden() as $lid) : ?>
                             <tr>
                                 <td><?= $lid->id; ?></td>
                                 <td><?= $lid->naam; ?></td>
