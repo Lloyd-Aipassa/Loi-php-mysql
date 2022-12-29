@@ -24,7 +24,7 @@
     <main class="main">
         <div class="center">
             <div class="row">
-                <div class="col fam-col" style="overflow-x:auto;">
+               <div class="col fam-col" style="overflow-x:auto;"> 
                     <table>
                         <tr>
                             <th>ID</th>
@@ -47,7 +47,7 @@
                                 <td><?= $familie->soort_lid; ?></td>
                                 <td><?= $familie->bedrag; ?></td>
                                 <td><a href="edit-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
-                                    <a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam2">delete</button></a>
+                                    <a onclick="return confirm('Weet je zeker dat je deze persoon wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam2">delete</button></a>
                                     <a href="contributie-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Betalen</button></a>
                                 </td>
                             </tr>

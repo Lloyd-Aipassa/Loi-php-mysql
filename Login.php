@@ -1,6 +1,9 @@
 <?php
 $pageTitle = 'Login';
 session_start();
+if (isset($_SESSION["loggedIn"])) {
+    header("location:index.php");
+}
 
 include('view/class.view.login.php');
 $loginObj = new Loginview();
@@ -29,17 +32,19 @@ if (isset($_POST["submit"])) {
 </head>
 
 <div class="grid-container">
-    <aside>
-        <?php include('components/nav.php') ?>
-    </aside>
+
     <main class="main2">
         <section class="card-form">
             <H2><?php echo $veldLeeg; ?></H2>
             <H2><?php echo $veldOnjuist; ?></H2>
             <form method="POST">
-                <label>Gebruikersnaam</label>
+                <label>
+                    <p>Gebruikersnaam</p>
+                </label>
                 <input type="text" name="gebruikers_naam" value="">
-                <label>Wachtwoord</label>
+                <label>
+                    <p>Wachtwoord</p>
+                </label>
                 <input type="text" name="wachtwoord" value=''>
                 <button type="submit" name="submit">Log in</button>
             </form>
@@ -47,12 +52,16 @@ if (isset($_POST["submit"])) {
     </main>
 </div>
 
-<?php include('components/footer.php') ?>
+
 
 
 </html>
 
 <style>
+    .main2 {
+        height: 100vh;
+    }
+
     section {
         width: 100%;
         height: 100%;
@@ -80,8 +89,9 @@ if (isset($_POST["submit"])) {
     }
 
     form p {
-        color: red;
+        color: #fff;
         margin-bottom: 20px;
+
     }
 
     form button {
@@ -94,6 +104,8 @@ if (isset($_POST["submit"])) {
         font-size: 20px;
         text-transform: uppercase;
         margin-top: 50px;
+        border: none;
+        border-bottom: 5px solid rgb(226, 77, 22);
     }
 
     input {

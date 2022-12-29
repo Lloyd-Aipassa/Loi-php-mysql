@@ -3,7 +3,7 @@ include('config/class.db.php');
 
 class FamilieModel extends Dbh
 {
-    public function getFamilie()
+    protected function getFamilie()
     {
         $id2 = $_GET['id'];
         $sql = "SELECT 
@@ -26,7 +26,7 @@ class FamilieModel extends Dbh
         return $families;
     }
 
-    public function getContibutieTotaal()
+    protected function getContibutieTotaal()
     {
         // ********** query id van individuele familie ***********
         $id2 = $_GET['id'];

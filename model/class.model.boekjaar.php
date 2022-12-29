@@ -3,7 +3,7 @@ include('config/class.db.php');
 
 class BoekjaarModel extends Dbh
 {
-    public function getBoekjaar()
+    protected function getBoekjaar()
     {
         $sql = "SELECT 
         families.id,

@@ -1,9 +1,5 @@
 <?php
-$pageTitle = '';
-
-include('controller/class.contr.editFamilieLid.php');
-$editLidObj = new editFamilieLidContr();
-$editLidObj->updateFamilieLid();
+$pageTitle = 'ZOEK EEN FAMILIE';
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -13,35 +9,36 @@ $editLidObj->updateFamilieLid();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title><?php $pageTitle; ?></title>
+    <title><?php $pageTitle ?></title>
 </head>
 
 <?php include('components/header.php') ?>
+
+
 <div class="grid-container">
     <aside>
         <?php include('components/nav.php') ?>
     </aside>
     <main class="main">
         <section class="card-form">
-            <H2>Familie lid aanpassen</H2>
-            <form method="POST">
-                <label>Voornaam</label>
-                <input type="text" name="naam" value="<?= $editLidObj->showEditFamilieLid()->naam; ?>">
-                <label>Geboortedatum</label>
-                <input type="date" name="geboorteDatum" value="<?= $editLidObj->showEditFamilieLid()->geboorteDatum; ?>">
-
-                <button type="submit" value="submit" name="submit">voeg toe</button>
+            <form method="POST" action="zoek-resultaat.php">
+                <label>
+                    <p>Zoek een achternaam</p>
+                </label>
+                <input type="text" placeholder="Vul een achternaam of een adres in..." name="zoek" value=''>
+                <button type="submit" name="submit">Zoek</button>
             </form>
         </section>
     </main>
 </div>
-
 <?php include('components/footer.php') ?>
-
-
 </html>
 
 <style>
+    .main2 {
+        height: 100vh;
+    }
+
     section {
         width: 100%;
         height: 100%;
@@ -65,12 +62,13 @@ $editLidObj->updateFamilieLid();
         border: 1px solid #fff;
         padding: 20px;
         border-radius: 8px;
-        min-height: 400px;
+        min-height: 200px;
     }
 
     form p {
-        color: red;
+        color: #fff;
         margin-bottom: 20px;
+
     }
 
     form button {
@@ -83,6 +81,8 @@ $editLidObj->updateFamilieLid();
         font-size: 20px;
         text-transform: uppercase;
         margin-top: 50px;
+        border: none;
+        border-bottom: 5px solid rgb(226, 77, 22);
     }
 
     input {

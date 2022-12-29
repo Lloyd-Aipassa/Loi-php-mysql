@@ -3,7 +3,7 @@ include('config/class.db.php');
 
 class DeleteFamilieModel extends Dbh
 {
-    public function deleteFamilie()
+    protected function deleteFamilie()
     {
         $id = $_GET['id'];
         $sql = 'DELETE FROM families Where id=:id';

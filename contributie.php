@@ -18,9 +18,7 @@ $contributieObj = new ContributieView();
 </head>
 
 <?php include('components/header.php') ?>
-
-<button onclick="history.go(-1)">Go Back 2 Pages</button>
-
+<!-- <button onclick="history.go(-1)">Go Back 2 Pages</button> -->
 <div class="grid-container">
     <aside>
         <?php include('components/nav.php') ?>

@@ -3,7 +3,7 @@ include('config/class.db.php');
 
 class editFamilieModel extends Dbh
 {
-    public function getFam()
+    protected function getFam()
     {
         //Pak ID uit superglobal met GET method
         $id = $_GET['id'];
@@ -15,7 +15,7 @@ class editFamilieModel extends Dbh
         return $familie;
     }
 
-    public function setFam()
+    protected function setFam()
     {
         //Pak ID uit superglobal met GET method
         $id = $_GET['id'];

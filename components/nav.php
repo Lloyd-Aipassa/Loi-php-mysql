@@ -18,7 +18,7 @@
     <ul class=" nav">
         <li>
             <a href="index.php">Families</a>
-        </li>        
+        </li>
         <li>
             <a href="soort-lid.php">Soort lid</a>
         </li>
@@ -30,6 +30,9 @@
         </li>
         <li>
             <a href="components/logout.php">Logout</a>
+        </li>
+        <li>
+            <a href="zoek.php">Zoek familie</a>
         </li>
     </ul>
 </nav>

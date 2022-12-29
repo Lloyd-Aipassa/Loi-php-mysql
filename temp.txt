@@ -1,50 +1,12 @@
 <?php
+$pageTitle = 'zoek lid';
 
-$dsn = 'mysql:=localhost; dbname=lloyd';
-$username = 'lloyd';
-$password = 'lloyd123';
-$options = [];
-
-// $dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
-// $username = 'lloyd';
-// $password = 'L249m66a';
-// $options = [];
-
-try {
-    $conn = new PDO($dsn, $username, $password, $options);
-    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); // zet een defealt fetch 
-
-} catch(PDOException $e) { 
-} 
-
-<?php
-$pageTitle = 'Login';
-session_start();
 include('config/db.php');
-$veldLeeg = $veldOnjuist = "";
-if (isset($_POST["submit"])) {
-    if ($_POST["gebruikers_naam"] === "" or ["wachtwoord"] === "") {
-        $veldLeeg = "Vul alle velden in...";
-    } else {
-        $gebruikers_naam = (trim($_POST["gebruikers_naam"]));
-        $wachtwoord = (trim($_POST["wachtwoord"]));
-        $sql = "SELECT * FROM gebruiker WHERE :gebruikers_naam = gebruikers_naam AND :wachtwoord = wachtwoord";
-        $statement = $conn->prepare($sql);
-        $statement->execute([':gebruikers_naam' => $gebruikers_naam, ':wachtwoord' => $wachtwoord]);
-        $controleer = $statement->fetch();
-        if ($controleer > 0) {
-            $_SESSION["loggedIn"] = $gebruikers_naam;
-            header("location:families.php");
-        }
-        $veldOnjuist = "Je gebruikersnaam of wachtwoord is incorrect...";
-    }
-}
+$veldLeeg = "";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="nl">
-
 
 <head>
     <meta charset="UTF-8">
@@ -54,34 +16,60 @@ if (isset($_POST["submit"])) {
     <title><?php $pageTitle ?></title>
 </head>
 
-
-
-
 <div class="grid-container">
-    <aside>
-        <?php include('components/nav.php') ?>
-    </aside>
-    <main class="main">
-        <section class="card-form">
-            <H2><?php echo $veldLeeg; ?></H2>
-            <H2><?php echo $veldOnjuist; ?></H2>
-            <form method="POST">
-                <label>Gebruikersnaam</label>
-                <input type="text" name="gebruikers_naam" value="">
-                <label>Wachtwoord</label>
-                <input type="text" name="wachtwoord" value=''>
-                <button type="submit" name="submit">Log in</button>
-            </form>
-        </section>
+
+    <main class="main2">
+        <?php
+        if (isset($_POST["submit"])) {
+            if ($_POST["zoek"] === "") {
+                // echo "<h2>Zoekveld nog leeg...</h2>"; 
+                echo "<h2>Zoekveld is nog leeg...</h2>"; ?>
+                <?php
+            } else {
+                $zoek = (trim($_POST["zoek"]));
+                $sql = "SELECT * FROM families WHERE achternaam LIKE '%$zoek%' OR adres LIKE '%$zoek%'";
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+                $controleer = $statement->fetchAll();
+                $count = $statement->rowCount();
+                if ($count > 0) { ?>
+                    <h2><?php $veldLeeg = "Niets gevonden"; ?></h2>
+                    <table>
+                        <tr>
+                            <td><h2>Achternaam</h2></td>
+                            <td><h2>Adres</h2></td>
+                        </tr>
+                        <?php
+                            foreach ($controleer as $resultaat) { ?>
+                            <tr>
+                                <td><p><a class="link-achternaam" href="familie.php?id=<?= $resultaat->id ?>"> <?= $resultaat->achternaam; ?></a></p></td>
+
+                                <td><p><?php echo $resultaat->adres; ?> </p></td>
+                            </tr>
+
+                        <?php } ?>
+                    </table>
+                    <?php
+                } else {
+                    echo "<h2>Geen familie gevonden...</h2>";
+                }
+            }
+        }
+        ?>
+        <h2><a href="zoek.php"><button class="details-fam">terug naar zoeken</button></a></h2>
     </main>
 </div>
 
-<?php include('components/footer.php') ?>
+
 
 
 </html>
 
 <style>
+    .main2 {
+        height: 100vh;
+    }
+
     section {
         width: 100%;
         height: 100%;
@@ -105,12 +93,13 @@ if (isset($_POST["submit"])) {
         border: 1px solid #fff;
         padding: 20px;
         border-radius: 8px;
-        min-height: 400px;
+        min-height: 200px;
     }
 
     form p {
-        color: red;
+        color: #fff;
         margin-bottom: 20px;
+
     }
 
     form button {
@@ -123,6 +112,8 @@ if (isset($_POST["submit"])) {
         font-size: 20px;
         text-transform: uppercase;
         margin-top: 50px;
+        border: none;
+        border-bottom: 5px solid rgb(226, 77, 22);
     }
 
     input {
@@ -132,5 +123,29 @@ if (isset($_POST["submit"])) {
         border-bottom: 1px solid #fff;
         background-color: #ffffff00;
         color: #fff;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid;
+        width: 1rem;
+    }
+
+    td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        padding: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    a.link-achternaam{
+        color: coral!important;
     }
 </style>

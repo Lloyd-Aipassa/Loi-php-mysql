@@ -3,7 +3,7 @@ include('config/class.db.php');
 
 class LoginModel extends Dbh
 {
-    public function getUser()
+    protected function getUser()
     {
 
         $gebruikers_naam = (trim($_POST["gebruikers_naam"]));
