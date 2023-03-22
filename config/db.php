@@ -1,9 +1,9 @@
 <?php
 
-$dsn = 'mysql:=localhost; dbname=lloyd';
-$username = 'lloyd';
-$password = 'lloyd123';
-$options = [];
+// $dsn = 'mysql:=localhost; dbname=lloyd';
+// $username = 'lloyd';
+// $password = 'lloyd123';
+// $options = [];
 
 // $dsn = 'mysql:=loi.brooklynwebdesign.nl; dbname=lloyd';
 // $username = 'lloyd';
