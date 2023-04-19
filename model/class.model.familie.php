@@ -15,10 +15,12 @@ class FamilieModel extends Dbh
         familieleden.lid_id,
         familieleden.leeftijd,
         familieleden.soort_lid,
-        contributie.bedrag
+        contributie.bedrag,
+        soortleden.soort_lid
         FROM familieleden
         left JOIN families ON(families.id = familieleden.lid_id)
         left JOIN contributie ON(familieleden.contributie_id = contributie.id)
+        left JOIN soortleden ON(familieleden.soort_id = soortleden.id)
         Where lid_id=:id;";
         $statement = $this->connect()->prepare($sql);
         $statement->execute([':id' => $id2]);

@@ -1,7 +1,7 @@
 <?php
-    $pageTitle = 'Familie';
-    include('view/class.view.familie.php');
-    $familieObj = new FamilieView();
+$pageTitle = 'Familieleden';
+include('view/class.view.familie.php');
+$familieObj = new FamilieView();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
     <main class="main">
         <div class="center">
             <div class="row">
-               <div class="col fam-col" style="overflow-x:auto;"> 
+                <div class="col fam-col" style="overflow-x:auto;">
                     <table>
                         <tr>
                             <th>ID</th>
@@ -48,7 +48,7 @@
                                 <td><?= $familie->bedrag; ?></td>
                                 <td><a href="edit-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
                                     <a onclick="return confirm('Weet je zeker dat je deze persoon wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam2">delete</button></a>
-                                    <a href="contributie-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Betalen</button></a>
+                                    <!-- <a href="contributie-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Betalen</button></a> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

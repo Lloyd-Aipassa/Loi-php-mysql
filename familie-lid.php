@@ -28,26 +28,26 @@ $familiesObj = new Test();
     <main class="main">
         <div class="center">
             <div class="row">
-                    <table>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Achternaam</th>
+                        <th>Adres</th>
+                    </tr>
+                    <?php
+
+                    foreach ($familiesObj->getFamilies() as $familie) : ?>
                         <tr>
-                            <th>ID</th>
-                            <th>Achternaam</th>
-                            <th>Adres</th>
+                            <td><?= $familie->id; ?></td>
+                            <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
+                            <td><?= $familie->adres; ?></td>
                         </tr>
-                        <?php 
-                     
-                        foreach ($familiesObj ->getFamilies() as $familie) : ?>
-                            <tr>
-                                <td><?= $familie->id; ?></td>
-                                <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
-                                <td><?= $familie->adres; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
+                    <?php endforeach; ?>
+                </table>
             </div>
         </div>
-    </main>
+</div>
+</main>
 </div>
 
 <?php include('components/footer.php') ?>

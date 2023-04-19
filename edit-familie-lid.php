@@ -29,13 +29,11 @@ $editLidObj->updateFamilieLid();
                 <input type="text" name="naam" value="<?= $editLidObj->showEditFamilieLid()->naam; ?>">
                 <label>Geboortedatum</label>
                 <input type="date" name="geboorteDatum" value="<?= $editLidObj->showEditFamilieLid()->geboorteDatum; ?>">
-
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>
     </main>
 </div>
-
 <?php include('components/footer.php') ?>
 
 
