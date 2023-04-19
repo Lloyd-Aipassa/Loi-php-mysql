@@ -38,7 +38,7 @@ $familiesObj = new FamiliesView();
                         <?php foreach ($familiesObj->ShowFamilies() as $familie) : ?>
                             <tr>
                                 <td><?= $familie->id; ?></td>
-                                <td><a href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
+                                <td><a class="fam-link" href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
                                 <td><?= $familie->adres; ?></td>
                                 <td><a href="edit-familie.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
                                     <a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>"> <button class="details-fam2">delete</button></a>
@@ -71,5 +71,9 @@ $familiesObj = new FamiliesView();
         height: 100%;
         justify-content: space-between;
         /* align-items: center; */
+    }
+
+    a.fam-link {
+        color: coral !important;
     }
 </style>
