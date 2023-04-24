@@ -18,7 +18,7 @@ $loginObj = new ZoekResultaat();
 </head>
 
 <div class="grid-container">
-    <main class="main2">
+    <main class="main">
         <?php $loginObj->ShowZoekResultaat(); ?>
         <h2><a href="zoek.php"><button class="details-fam">terug naar zoeken</button></a></h2>
     </main>

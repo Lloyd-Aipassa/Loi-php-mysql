@@ -9,7 +9,7 @@ class ZoekModel extends Dbh
             if ($_POST["zoek"] === "") {
                 echo "<h2>Zoekveld is nog leeg...</h2>";
             } else {
-        $zoek = (trim($_POST["zoek"]));
+                $zoek = (trim($_POST["zoek"]));
                 $sql = "SELECT * FROM families WHERE achternaam LIKE '%$zoek%' OR adres LIKE '%$zoek%'";
                 $statement = $this->connect()->prepare($sql);
                 $statement->execute();
@@ -19,20 +19,24 @@ class ZoekModel extends Dbh
                     <h2><?php $veldLeeg = "Niets gevonden"; ?></h2>
                     <table>
                         <tr>
-                            <td><h2>Achternaam</h2></td>
-                            <td><h2>Adres</h2></td>
+                            <caption>Zoekresultaten</caption>
+                            <th>Achternaam</th>
+                            <th>Adres</th>
                         </tr>
                         <?php
-                            foreach ($controleer as $resultaat) { ?>
+                        foreach ($controleer as $resultaat) { ?>
                             <tr>
-                                <td><p><a class="link-achternaam" href="familie.php?id=<?= $resultaat->id ?>"> <?= $resultaat->achternaam; ?></a></p></td>
-
-                                <td><p><?php echo $resultaat->adres; ?> </p></td>
+                                <td data-cell="Achternaam">
+                                    <p><a class="link-achternaam" href="familie.php?id=<?= $resultaat->id ?>"> <?= $resultaat->achternaam; ?></a></p>
+                                </td>
+                                <td data-cell="Straat">
+                                    <p><?php echo $resultaat->adres; ?> </p>
+                                </td>
                             </tr>
 
                         <?php } ?>
                     </table>
-                    <?php
+<?php
                 } else {
                     echo "<h2>Geen familie gevonden...</h2>";
                 }

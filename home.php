@@ -31,7 +31,6 @@ $familiesObj = new FamiliesView();
                 <div class="col">
                     <table>
                         <tr>
-                            <!-- <caption>Families</caption> -->
                             <!-- <th>ID</th> -->
                             <th>Achternaam</th>
                             <th>Adres</th>
