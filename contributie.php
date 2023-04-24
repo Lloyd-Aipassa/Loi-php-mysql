@@ -29,6 +29,7 @@ $contributieObj = new ContributieView();
                 <div class="col">
                     <table>
                         <tr>
+                            <caption>Contributie per Lid</caption>
                             <th>id</th>
                             <th>Naam</th>
                             <th>Leeftijd</th>
@@ -36,10 +37,10 @@ $contributieObj = new ContributieView();
                         </tr>
                         <?php foreach ($contributieObj->showContributie() as $lid) : ?>
                             <tr>
-                                <td><?= $lid->id; ?></td>
-                                <td><?= $lid->naam; ?></td>
-                                <td><?= $lid->leeftijd; ?></td>
-                                <td><?= $lid->bedrag; ?></td>
+                                <td data-cell="id"><?= $lid->id; ?></td>
+                                <td data-cell="Naam"><?= $lid->naam; ?></td>
+                                <td data-cell="Leeftijd"><?= $lid->leeftijd; ?></td>
+                                <td data-cell="Bedrag">€<?= $lid->bedrag; ?>,-</td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

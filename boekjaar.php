@@ -28,20 +28,20 @@ $boekjaarObj = new BoekjaarView();
                 <div class="col fam-col" style="overflow-x:auto;">
                     <table>
                         <tr>
-                          
-                                <th>ID</th>
-                                <th>Achternaam</th>
-                                <th>Adres</th>
-                                <th>Contributie</th>
-                     
+                            <caption>Contributie per familie</caption>
+                            <th>ID</th>
+                            <th>Achternaam</th>
+                            <th>Adres</th>
+                            <th>Contributie</th>
+
                         </tr>
-                        
-                        <?php foreach ($boekjaarObj ->ShowBoekjaar() as $contributieTotaal) : ?>
+
+                        <?php foreach ($boekjaarObj->ShowBoekjaar() as $contributieTotaal) : ?>
                             <tr>
-                                <td><?= $contributieTotaal->id; ?></td>
-                                <td><?= $contributieTotaal->achternaam; ?></td>
-                                <td><?= $contributieTotaal->adres; ?></td>
-                                <td>€<?= $contributieTotaal->totaal; ?>,- </td>
+                                <td data-cell="id"><?= $contributieTotaal->id; ?></td>
+                                <td data-cell="Achternaam"><?= $contributieTotaal->achternaam; ?></td>
+                                <td data-cell="Adres"><?= $contributieTotaal->adres; ?></td>
+                                <td data-cell="Totaal">€<?= $contributieTotaal->totaal; ?>,- </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

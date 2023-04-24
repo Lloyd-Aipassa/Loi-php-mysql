@@ -2,7 +2,7 @@
 $pageTitle = 'Login';
 session_start();
 if (isset($_SESSION["loggedIn"])) {
-    header("location:index.php");
+    header("location:home.php");
 }
 
 include('view/class.view.login.php');

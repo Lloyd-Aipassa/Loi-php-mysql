@@ -28,17 +28,18 @@ $soortLidObj = new SoortLedenView();
                 <div class="col">
                     <table>
                         <tr>
+                            <caption>Soort lid, gebaseerd op leeftijd</caption>
                             <th>id</th>
                             <th>Naam</th>
                             <th>Leeftijd</th>
                             <th>soort lid</th>
                         </tr>
-                        <?php foreach ($soortLidObj ->showSoortLeden() as $lid) : ?>
+                        <?php foreach ($soortLidObj->showSoortLeden() as $lid) : ?>
                             <tr>
-                                <td><?= $lid->id; ?></td>
-                                <td><?= $lid->naam; ?></td>
-                                <td><?= $lid->leeftijd; ?></td>
-                                <td><?= $lid->soort_lid; ?></td>
+                                <td data-cell="ID"><?= $lid->id; ?></td>
+                                <td data-cell="Naam"><?= $lid->naam; ?></td>
+                                <td data-cell="Leeftijd"><?= $lid->leeftijd; ?></td>
+                                <td data-cell="Soort lid"><?= $lid->soort_lid; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

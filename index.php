@@ -1,10 +1,24 @@
 <?php
+$pageTitle = 'Login';
+session_start();
+if (isset($_SESSION["loggedIn"])) {
+    header("location:home.php");
+}
 
-$pageTitle = 'Families';
-include('view/class.view.families.php');
-$familiesObj = new FamiliesView();
+include('view/class.view.login.php');
+$loginObj = new Loginview();
+
+$veldLeeg = $veldOnjuist = "";
+if (isset($_POST["submit"])) {
+    if ($_POST["gebruikers_naam"] === "" or ["wachtwoord"] === "") {
+        $veldLeeg = "Vul alle velden in...";
+    } else {
+        $loginObj->loggedin();
+        $veldOnjuist = "Je gebruikersnaam of wachtwoord is incorrect...";
+    }
+}
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -17,63 +31,89 @@ $familiesObj = new FamiliesView();
     <title><?php $pageTitle ?></title>
 </head>
 
-<?php include('components/header.php') ?>
-
-
 <div class="grid-container">
-    <aside>
-        <?php include('components/nav.php') ?>
-    </aside>
-    <main class="main">
-        <div class="center">
-            <div class="row">
-                <a href="add-familie.php"><button class="add-fam">Voeg een nieuwe familie toe</button></a>
-                <div class="col">
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Achternaam</th>
-                            <th>Adres</th>
-                        </tr>
-                        <?php foreach ($familiesObj->ShowFamilies() as $familie) : ?>
-                            <tr>
-                                <td><?= $familie->id; ?></td>
-                                <td><a class="fam-link" href="familie.php?id=<?= $familie->id ?>"> <?= $familie->achternaam; ?></a></td>
-                                <td><?= $familie->adres; ?></td>
-                                <td><a href="edit-familie.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
-                                    <a onclick="return confirm('Weet je zeker dat je deze familie wil verwijderen?')" href="delete-familie.php?id=<?= $familie->id ?>"> <button class="details-fam2">delete</button></a>
-                                    <a href="add-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Nieuw lid</button></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-            </div>
-        </div>
+
+    <main class="main2">
+        <section class="card-form">
+            <H2><?php echo $veldLeeg; ?></H2>
+            <H2><?php echo $veldOnjuist; ?></H2>
+            <form method="POST">
+                <label>
+                    <p>Gebruikersnaam</p>
+                </label>
+                <input type="text" name="gebruikers_naam" value="">
+                <label>
+                    <p>Wachtwoord</p>
+                </label>
+                <input type="text" name="wachtwoord" value=''>
+                <button type="submit" name="submit">Log in</button>
+            </form>
+        </section>
     </main>
 </div>
 
-<?php include('components/footer.php') ?>
+
 
 
 </html>
 
 <style>
-    hr.solid {
-        border-top: 1px solid #fff;
-        margin: 10px 10px 10px 0;
+    .main2 {
+        height: 100vh;
     }
 
-    .content {
-        display: flex;
-        flex-direction: column;
+    section {
         width: 100%;
         height: 100%;
-        justify-content: space-between;
-        /* align-items: center; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    a.fam-link {
-        color: coral !important;
+    section h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #fff;
+        padding: 20px;
+        border-radius: 8px;
+        min-height: 400px;
+    }
+
+    form p {
+        color: #fff;
+        margin-bottom: 20px;
+
+    }
+
+    form button {
+        margin: 0 30%;
+        padding: 20px;
+        background-color: coral;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-top: 50px;
+        border: none;
+        border-bottom: 5px solid rgb(226, 77, 22);
+    }
+
+    input {
+        padding: 10px;
+        margin: 20px 0;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: #ffffff00;
+        color: #fff;
     }
 </style>

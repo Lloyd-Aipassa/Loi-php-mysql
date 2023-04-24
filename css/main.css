@@ -13,6 +13,9 @@ h4,
 h5,
 h6,
 p,
+tr,
+th,
+td
 a {
 	font-family: "Poppins", sans-serif;
 }
@@ -22,24 +25,45 @@ h3{
 	font-weight: 400;
 }
 
-table,
+/* table,
 th,
 td {
 	border: 1px solid;
+} */
+
+table{
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+table, caption {
+	background-color: #3232327e;
+	width: 100%;
+	border-collapse: collapse;
+}	
+/* caption{
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: #3232327e;
+} */
+
+tr:nth-of-type(2n){
+	background-color: #323232;
+}
+
+th{
+	background-color: #0000007e;
+	padding: 10px 0;
+}
+
 
 td {
 	padding: 10px;
 	text-align: center;
 }
-th {
-	padding: 5px;
-}
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
+
+
 
 .grid-container {
 	position: relative;
@@ -164,7 +188,7 @@ main a {
 	max-width: 1000px;
 	border-radius: 8px;
 	padding: 20px;
-	background-image: linear-gradient(
+	/* background-image: linear-gradient(
 		to left top,
 		#0c0c0c,
 		#111111,
@@ -173,13 +197,32 @@ main a {
 		#1d1d1d
 	);
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+		rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
 
 
 
 @media screen and (max-width: 600px) {
+
+	/* tabel responsive maken */
+	th{display: none;}
+	td{display: block;}
+	td::before{
+		content: attr(data-cell) " :            ";
+		font-weight: 600;
+	}
+
+	td:nth-last-child(1)::before{
+		content: " ";
+	
+	}
+
+	/* td{
+		padding: 200px 0;
+	} */
+	
+	/* layout appicatie */
 	.grid-container {
 		position: relative;
 		display: block;
@@ -190,7 +233,7 @@ main a {
 		color: #ffffff;
 		width: 100%;
 		padding: 20px;
-		height: 100%;
+		min-height: 100vh;
 	}
 
 	aside {
