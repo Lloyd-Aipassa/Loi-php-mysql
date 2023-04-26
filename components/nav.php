@@ -29,7 +29,7 @@
             <a href="contributie.php">Contributie</a>
         </li>
         <li>
-            <a href="components/logout.php">Logout</a>
+            <a href="log-me-out.php">Logout</a>
         </li>
         <li>
             <a href="zoek.php">Zoek familie</a>
