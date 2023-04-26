@@ -10,7 +10,9 @@
 	}
 
 	header img {
+		display: block;
 		height: 100%;
+		width: 80px;
 		padding: 5px 0;
 	}
 
@@ -20,13 +22,13 @@
 	.ham-btn img {
 		/* display: none; */
 		background-color: #ffffff00;
-			border: none;
+		border: none;
 
 	}
 
 	.ham-btn img {
-			display: block;
-			width: 21px;
+		display: block;
+		width: 21px;
 	}
 
 
@@ -42,25 +44,33 @@
 			width: 21px;
 		}
 
-		header h1{
-		font-size: 20px;
+		header h1 {
+			font-size: 20px;
+		}
+
+		header img {
+			display: block;
+			height: 100%;
+			width: 60px;
+			padding: 5px 0;
 		}
 	}
 </style>
 
 <body>
-<?php
-session_start();
-    if (!isset($_SESSION["loggedIn"])){
-        header("location:index.php");
-    }
+	<?php
+	session_start();
+	if (!isset($_SESSION["loggedIn"])) {
+		header("location:index.php");
+	}
 	?>
 
 	<header>
 		<button class="ham-btn"> <img src="img/menu-icon.svg" alt="">
 		</button>
 		<h1><?php echo $pageTitle ?></h1>
-		<img src="img/pngwing.com.png" alt="logo">
+		<a href="index.php"><img src="img/pngwing.com.png" alt="logo"></a>
+
 
 
 	</header>

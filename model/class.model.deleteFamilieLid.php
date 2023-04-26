@@ -9,7 +9,11 @@ class DeleteFamilieLidModel extends Dbh
         $sql = 'DELETE FROM familieleden Where id=:id';
         $statement = $this->connect()->prepare($sql);
         if ($statement->execute([':id' => $id])); {
-            header("location: index.php");
+            // header("location: familie.php?id=$id");
+            header("location.reload(true)");
+            echo '<script type="text/javascript">window.history.back();</script>';
+            // header("location:javascript://history.go(-1)");
+            // header("location: index.php");
         }
     }
 }

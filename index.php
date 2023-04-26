@@ -35,8 +35,7 @@ if (isset($_POST["submit"])) {
 
     <main class="main2">
         <section class="card-form">
-            <H2><?php echo $veldLeeg; ?></H2>
-            <H2><?php echo $veldOnjuist; ?></H2>
+
             <form method="POST">
                 <label>
                     <p>Gebruikersnaam</p>
@@ -48,6 +47,8 @@ if (isset($_POST["submit"])) {
                 <input type="text" name="wachtwoord" value=''>
                 <button type="submit" name="submit">Log in</button>
             </form>
+            <H2><?php echo $veldLeeg; ?></H2>
+            <H2><?php echo $veldOnjuist; ?></H2>
         </section>
     </main>
 </div>
@@ -68,13 +69,14 @@ if (isset($_POST["submit"])) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: top;
     }
 
     section h2 {
         font-size: 30px;
         margin-bottom: 30px;
         text-align: center;
+        color: red;
     }
 
     form {
@@ -86,6 +88,7 @@ if (isset($_POST["submit"])) {
         padding: 20px;
         border-radius: 8px;
         min-height: 400px;
+        margin-top: 100px;
     }
 
     form p {
@@ -115,5 +118,27 @@ if (isset($_POST["submit"])) {
         border-bottom: 1px solid #fff;
         background-color: #ffffff00;
         color: #fff;
+    }
+
+    input:focus-visible {
+        outline: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        form {
+            min-height: 150px;
+            margin-top: 40px;
+        }
+
+        section h2 {
+            font-size: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: red;
+        }
+
+        form button {
+            margin: 50px 0 0 0;
+        }
     }
 </style>

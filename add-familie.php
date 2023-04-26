@@ -94,4 +94,19 @@ $addFamilieObj -> CreateFamilies();
         background-color: #ffffff00;
         color: #fff;
     }
+
+    
+    input:focus-visible {
+        outline: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        form button {
+        margin: 50px 0 0 0;
+        }
+        form {
+        min-height: 100px;
+    }
+    }
+
 </style>

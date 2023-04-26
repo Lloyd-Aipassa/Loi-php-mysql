@@ -27,7 +27,6 @@ $familieObj = new FamilieView();
                 <div class="col fam-col" style="overflow-x:auto;">
                     <table>
                         <tr>
-                            <!-- <th>ID</th> -->
                             <th>Naam</th>
                             <th>Achternaam</th>
                             <th>Adres</th>
@@ -39,17 +38,15 @@ $familieObj = new FamilieView();
                         </tr>
                         <?php foreach ($familieObj->showFamilie() as $familie) : ?>
                             <tr>
-                                <!-- <td data-cell="ID"><?= $familie->id; ?></td> -->
                                 <td data-cell="Naam"><?= $familie->naam; ?></td>
                                 <td data-cell="Achternaam"><?= $familie->achternaam; ?></td>
                                 <td data-cell="Adres"><?= $familie->adres; ?></td>
                                 <td data-cell="Geboorte datum"><?= $familie->geboorteDatum; ?></td>
                                 <td data-cell="Leeftijd"><?= $familie->leeftijd; ?> jaar</td>
                                 <td data-cell="Soort lid"><?= $familie->soort_lid; ?></td>
-                                <td data-cell="Bedrag">€    <?= $familie->bedrag; ?>,- </td>
+                                <td data-cell="Bedrag">€ <?= $familie->bedrag; ?>,- </td>
                                 <td><a href="edit-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam">edit</button></a>
                                     <a onclick="return confirm('Weet je zeker dat je deze persoon wil verwijderen?')" href="delete-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam2">delete</button></a>
-                                    <!-- <a href="contributie-familie-lid.php?id=<?= $familie->id ?>"><button class="details-fam3 fam-kleur">Betalen</button></a> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -75,17 +72,17 @@ $familieObj = new FamilieView();
 
 <style>
     /* nodig voor deze specifieke pagina */
-    .tabel-totaal{
+    .tabel-totaal {
         background-color: black;
         margin-top: 10px;
     }
 
-    .totaal:nth-last-child(1)::before{
-		content: attr(data-cell) " :  ";
-		font-weight: 600;
-	}
+    .totaal:nth-last-child(1)::before {
+        content: attr(data-cell) " :  ";
+        font-weight: 600;
+    }
 
-    th.totaal{
+    th.totaal {
         border-radius: 8px;
     }
 </style>
