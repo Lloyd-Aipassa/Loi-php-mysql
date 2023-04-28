@@ -4,15 +4,15 @@
 
 class Dbh
 {
-    // private $serverName = "localhost";
-    // private $userName = "lloyd";
-    // private $password = "lloyd123";
-    // private $dbName =  "lloyd";
-
-    private $serverName = "loi.brooklynwebdesign.nl";
+    private $serverName = "localhost";
     private $userName = "lloyd";
-    private $password = "L249m66a";
+    private $password = "lloyd123";
     private $dbName =  "lloyd";
+
+    // private $serverName = "loi.brooklynwebdesign.nl";
+    // private $userName = "lloyd";
+    // private $password = "L249m66a";
+    // private $dbName =  "lloyd";
 
 
     protected function connect()

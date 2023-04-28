@@ -25,8 +25,12 @@ class FamilieLidModel extends Dbh
         
                     -- ******mutaties voor contributie****** 
                     UPDATE familieleden SET contributie_id = soort_id;
-                    UPDATE familieleden SET betaald = contributie_id;
-                    UPDATE familieleden SET soort_id = csoort_lid;
+
+                      -- ******Set Boekjaar****** 
+                    UPDATE familieleden SET boekjaar_id = 1;
+
+                    -- ******Update boekjaar****** 
+                    UPDATE boekjaar SET boekjaar = YEAR(CURRENT_DATE()) WHERE id = 1;
                     ';
             $statement = $this->connect()->prepare($sql);
             if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':lid_id' => $lid_id])) {

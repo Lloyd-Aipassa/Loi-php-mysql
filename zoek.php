@@ -23,7 +23,7 @@ $pageTitle = 'ZOEK EEN FAMILIE';
         <section class="card-form">
             <form method="POST" action="zoek-resultaat.php">
                 <label>
-                    <p>Zoek een achternaam</p>
+                    <p>Zoek een achternaam of een adres</p>
                 </label>
                 <input type="text" placeholder="Vul een achternaam of een adres in..." name="zoek" value=''>
                 <button type="submit" name="submit">Zoek</button>

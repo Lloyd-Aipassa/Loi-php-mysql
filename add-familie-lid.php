@@ -29,9 +29,9 @@ $addFamilieObj -> CreateFamilieLid();
             <H2>Voeg een familie lid toe</H2>
             <form action="add-familie-lid.php" method="POST">
                 <label>Voornaam</label>
-                <input type="text" name="naam" value="">
+                <input type="text" name="naam" required value="">
                 <label>Geboortedatum</label>
-                <input type="date" name="geboorteDatum" value=''>
+                <input type="date" name="geboorteDatum" required value=''>
                 <input type="hidden" name="lid_id" value='<?= $_GET['id']; ?>'>
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>

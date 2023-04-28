@@ -5,7 +5,6 @@
 	box-sizing: border-box;
 }
 
-
 h1,
 h2,
 h3,
@@ -22,7 +21,7 @@ a {
 }
 
 h2,
-h3{
+h3 {
 	font-weight: 400;
 }
 
@@ -32,16 +31,17 @@ td {
 	border: 1px solid;
 } */
 
-table{
+table {
 	border-radius: 8px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-table, caption {
+table,
+caption {
 	background-color: #3232327e;
 	width: 100%;
 	border-collapse: collapse;
-}	
-caption{
+}
+caption {
 	font-size: 1rem;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -50,23 +50,19 @@ caption{
 	padding: 20px;
 }
 
-tr:nth-of-type(2n){
+tr:nth-of-type(2n) {
 	background-color: #323232;
 }
 
-th{
+th {
 	background-color: #0000007e;
 	padding: 10px 0;
 }
-
 
 td {
 	padding: 10px;
 	text-align: center;
 }
-
-
-
 
 .grid-container {
 	position: relative;
@@ -204,28 +200,27 @@ main a {
 		rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
-
-
-
 @media screen and (max-width: 600px) {
-
 	/* tabel responsive maken */
-	th{display: none;}
-	td{display: block;}
-	td::before{
+	th {
+		display: none;
+	}
+	td {
+		display: block;
+	}
+	td::before {
 		content: attr(data-cell) " :            ";
 		font-weight: 600;
 	}
 
-	td:nth-last-child(1)::before{
+	td:nth-last-child(1)::before {
 		content: " ";
-	
 	}
 
 	/* td{
 		padding: 200px 0;
 	} */
-	
+
 	/* layout appicatie */
 	.grid-container {
 		position: relative;

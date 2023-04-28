@@ -37,7 +37,8 @@ class editFamilieLidModel extends Dbh
             
                 -- ******mutatie voor contributie******
                 UPDATE familieleden SET contributie_id = soort_id WHERE id=:id;
-                UPDATE familieleden SET betaald = contributie_id WHERE id=:id;';
+                UPDATE familieleden SET boekjaar_id WHERE id=:id;
+                ';
 
             $statement = $this->connect()->prepare($sql);
             if ($statement->execute([':naam' => $naam, ':geboorteDatum' => $geboorteDatum, ':id' => $id])) {

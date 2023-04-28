@@ -14,7 +14,6 @@ class FamilieModel extends Dbh
         familieleden.geboorteDatum,
         familieleden.lid_id,
         familieleden.leeftijd,
-        familieleden.soort_lid,
         contributie.bedrag,
         soortleden.soort_lid
         FROM familieleden

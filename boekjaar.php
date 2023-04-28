@@ -33,6 +33,7 @@ $boekjaarObj = new BoekjaarView();
                             <th>Achternaam</th>
                             <th>Adres</th>
                             <th>Contributie</th>
+                            <th>Boekjaar</th>
 
                         </tr>
 
@@ -42,6 +43,7 @@ $boekjaarObj = new BoekjaarView();
                                 <td data-cell="Achternaam"><?= $contributieTotaal->achternaam; ?></td>
                                 <td data-cell="Adres"><?= $contributieTotaal->adres; ?></td>
                                 <td data-cell="Totaal">€<?= $contributieTotaal->totaal; ?>,- </td>
+                                <td data-cell="Boekjaar"><?= $contributieTotaal->boekjaar; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

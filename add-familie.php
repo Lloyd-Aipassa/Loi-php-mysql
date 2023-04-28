@@ -28,9 +28,9 @@ $addFamilieObj -> CreateFamilies();
             <H2>Voeg een familie toe</H2>
             <form action="add-familie.php" method="POST">
                 <label>achternaam</label>
-                <input type="text" name="achternaam" value="">
+                <input type="text" name="achternaam" required value="">
                 <label>Adres</label>
-                <input type="text" name="adres" value=''>
+                <input type="text" name="adres" required value=''>
                 <button type="submit" value="submit" name="submit">voeg toe</button>
             </form>
         </section>

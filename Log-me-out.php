@@ -13,6 +13,8 @@ $pageTitle = 'Logout';
     <title><?php $pageTitle ?></title>
 </head>
 
+
+
 <div class="grid-container">
 
     <main class="main2">
@@ -22,8 +24,8 @@ $pageTitle = 'Logout';
                     <p>Weet je zeker dat je wil uitloggen?</p>
                 </label>
                 <span>
-                    <a href="components/logout.php"><button>Log out</button></a>
-                    <a href="index.php">
+                    <a class="logout" href="components/logout.php">LOG OUT</a>
+                    <a class="back" href="index.php">
                         <h3>BACK</h3>
                     </a>
                 </span>
@@ -69,7 +71,7 @@ $pageTitle = 'Logout';
 
     }
 
-    span{
+    span {
         width: 100%;
         display: flex;
         height: 230px;
@@ -78,13 +80,9 @@ $pageTitle = 'Logout';
         gap: 20px;
     }
 
-    form a {
+    form a.logout,
+    form a.back {
         text-align: center;
-     
-
-    }
-
-    form button {
         padding: 20px;
         max-width: 200px;
         background-color: coral;
@@ -95,5 +93,20 @@ $pageTitle = 'Logout';
         text-transform: uppercase;
         border: none;
         border-bottom: 5px solid rgb(226, 77, 22);
+
+    }
+
+    form a.logout {
+        background-color: #dc143c;
+        border-bottom: 5px solid #a80c2b;
+    }
+
+    form a.logout:hover {
+        background-color: #dc143c;
+        border-bottom: none;
+    }
+    form a.back:hover {
+        background-color: coral;
+        border-bottom: none;
     }
 </style>
