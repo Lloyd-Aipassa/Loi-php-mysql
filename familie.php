@@ -12,6 +12,7 @@ $familieObj = new FamilieView();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/familie.css">
     <title><?php $pageTitle; ?></title>
 </head>
 
@@ -70,19 +71,3 @@ $familieObj = new FamilieView();
 
 </html>
 
-<style>
-    /* nodig voor deze specifieke pagina */
-    .tabel-totaal {
-        background-color: black;
-        margin-top: 10px;
-    }
-
-    .totaal:nth-last-child(1)::before {
-        content: attr(data-cell) " :  ";
-        font-weight: 600;
-    }
-
-    th.totaal {
-        border-radius: 8px;
-    }
-</style>

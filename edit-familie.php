@@ -15,6 +15,7 @@ $editFamObj->updateFam();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/add-familie-lid.css">
     <title><?php $pageTitle; ?></title>
 </head>
 
@@ -30,9 +31,9 @@ $editFamObj->updateFam();
             <form method="POST">
                 <!-- <?php echo $message ?> -->
                 <label>achternaam</label>
-                <input type="text" value="<?= $editFamObj->showFam()->achternaam; ?>" name="achternaam" value="">
+                <input type="text" required value="<?= $editFamObj->showFam()->achternaam; ?>" name="achternaam" value="">
                 <label>Adres</label>
-                <input type="text" value="<?= $editFamObj->showFam()->adres; ?>" name="adres" value=''>
+                <input type="text" required value="<?= $editFamObj->showFam()->adres; ?>" name="adres" value=''>
                 <button type="submit" value="submit" name="submit">Update familie</button>
             </form>
         </section>
@@ -46,7 +47,7 @@ $editFamObj->updateFam();
 
 </html>
 
-<style>
+<!-- <style>
     section {
         width: 100%;
         height: 100%;
@@ -111,4 +112,4 @@ $editFamObj->updateFam();
         min-height: 100px;
     }
     }
-</style>
+</style> -->

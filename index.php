@@ -28,6 +28,7 @@ if (isset($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
     <title><?php $pageTitle ?></title>
 </head>
 
@@ -58,87 +59,5 @@ if (isset($_POST["submit"])) {
 
 </html>
 
-<style>
-    .main2 {
-        height: 100vh;
-    }
 
-    section {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: top;
-    }
 
-    section h2 {
-        font-size: 30px;
-        margin-bottom: 30px;
-        text-align: center;
-        color: red;
-    }
-
-    form {
-        width: 100%;
-        max-width: 800px;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #fff;
-        padding: 20px;
-        border-radius: 8px;
-        min-height: 400px;
-        margin-top: 100px;
-    }
-
-    form p {
-        color: #fff;
-        margin-bottom: 20px;
-
-    }
-
-    form button {
-        margin: 0 30%;
-        padding: 20px;
-        background-color: coral;
-        color: #fff;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 20px;
-        text-transform: uppercase;
-        margin-top: 50px;
-        border: none;
-        border-bottom: 5px solid rgb(226, 77, 22);
-    }
-
-    input {
-        padding: 10px;
-        margin: 20px 0;
-        border: none;
-        border-bottom: 1px solid #fff;
-        background-color: #ffffff00;
-        color: #fff;
-    }
-
-    input:focus-visible {
-        outline: none;
-    }
-
-    @media screen and (max-width: 600px) {
-        form {
-            min-height: 150px;
-            margin-top: 40px;
-        }
-
-        section h2 {
-            font-size: 20px;
-            margin-top: 30px;
-            text-align: center;
-            color: red;
-        }
-
-        form button {
-            margin: 50px 0 0 0;
-        }
-    }
-</style>

@@ -14,6 +14,7 @@ $familiesObj = new FamiliesView();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
     <title><?php $pageTitle ?></title>
 </head>
 
@@ -59,22 +60,3 @@ $familiesObj = new FamiliesView();
 
 </html>
 
-<style>
-    hr.solid {
-        border-top: 1px solid #fff;
-        margin: 10px 10px 10px 0;
-    }
-
-    .content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-        /* align-items: center; */
-    }
-
-    a.fam-link {
-        color: coral !important;
-    }
-</style>

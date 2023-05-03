@@ -1,8 +1,26 @@
 <?php
 include('class/class.db.php');
 
-class Test extends Dbh
-{
+
+
+
+
+
+//************************************************************************************************************************* */
+//************************************************************************************************************************* */
+// *******************************  Vind hier alle test code voor OOP  (DEZE MAP IS VERWAARLOOSBAAR)*************************/
+//************************************************************************************************************************* */
+//************************************************************************************************************************* */
+
+
+
+
+
+
+
+
+// class Test extends Dbh
+// {
     // public function getFamilies()
     // {
     //     $sql = 'SELECT * FROM families';
@@ -176,20 +194,20 @@ class Test extends Dbh
 
 
 
-    public function editFam()
-    {
-        //Pak ID uit superglobal met GET method
-        $id = $_GET['id'];
-        if (isset($_POST['achternaam']) && ($_POST['adres'])) {
-            $achternaam = $_POST['achternaam'];
-            $adres = $_POST['adres'];
-            $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
-            $statement = $this->connect()->prepare($sql);
-            if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
-                header("location: index.php");
-            }
-        }
-    }
+    // public function editFam()
+    // {
+    //     //Pak ID uit superglobal met GET method
+    //     $id = $_GET['id'];
+    //     if (isset($_POST['achternaam']) && ($_POST['adres'])) {
+    //         $achternaam = $_POST['achternaam'];
+    //         $adres = $_POST['adres'];
+    //         $sql = 'UPDATE families SET achternaam=:achternaam, adres=:adres WHERE id=:id';
+    //         $statement = $this->connect()->prepare($sql);
+    //         if ($statement->execute([':achternaam' => $achternaam, ':adres'  => $adres, ':id' => $id])) {
+    //             header("location: index.php");
+    //         }
+    //     }
+    // }
     // ***********EIND samen****************
 
     // public function getSoortLeden()
@@ -203,45 +221,45 @@ class Test extends Dbh
     // }
 
     //******************famie 2 functies **************************
-    public function getFamilie()
-    {
-        $id2 = $_GET['id'];
-        $sql = "SELECT 
-        families.achternaam,
-        families.adres,
-        familieleden.id,
-        familieleden.naam,
-        familieleden.geboorteDatum,
-        familieleden.lid_id,
-        familieleden.leeftijd,
-        familieleden.soort_lid,
-        contributie.bedrag
-        FROM familieleden
-        left JOIN families ON(families.id = familieleden.lid_id)
-        left JOIN contributie ON(familieleden.contributie_id = contributie.id)
-        Where lid_id=:id;";
-        $statement = $this->connect()->prepare($sql);
-        $statement->execute([':id' => $id2]);
-        $families = $statement->fetchAll();
-        return $families;
-    }
+//     public function getFamilie()
+//     {
+//         $id2 = $_GET['id'];
+//         $sql = "SELECT 
+//         families.achternaam,
+//         families.adres,
+//         familieleden.id,
+//         familieleden.naam,
+//         familieleden.geboorteDatum,
+//         familieleden.lid_id,
+//         familieleden.leeftijd,
+//         familieleden.soort_lid,
+//         contributie.bedrag
+//         FROM familieleden
+//         left JOIN families ON(families.id = familieleden.lid_id)
+//         left JOIN contributie ON(familieleden.contributie_id = contributie.id)
+//         Where lid_id=:id;";
+//         $statement = $this->connect()->prepare($sql);
+//         $statement->execute([':id' => $id2]);
+//         $families = $statement->fetchAll();
+//         return $families;
+//     }
 
-    public function getContibutieTotaal()
-    {
-        // ********** query id van individuele familie ***********
-        $id2 = $_GET['id'];
-        $sql = "SELECT 
-        contributie.bedrag,
-        SUM(bedrag) totaal
+//     public function getContibutieTotaal()
+//     {
+//         // ********** query id van individuele familie ***********
+//         $id2 = $_GET['id'];
+//         $sql = "SELECT 
+//         contributie.bedrag,
+//         SUM(bedrag) totaal
 
-        FROM familieleden
-        INNER JOIN contributie ON(familieleden.contributie_id = contributie.id)
-        Where lid_id=:id;";
+//         FROM familieleden
+//         INNER JOIN contributie ON(familieleden.contributie_id = contributie.id)
+//         Where lid_id=:id;";
 
-        $statement = $this->connect()->prepare($sql);   
-        $statement->execute([':id' => $id2]);
-        $contributieTotalen = $statement->fetchAll();
-        return $contributieTotalen;
-    }
-}
+//         $statement = $this->connect()->prepare($sql);   
+//         $statement->execute([':id' => $id2]);
+//         $contributieTotalen = $statement->fetchAll();
+//         return $contributieTotalen;
+//     }
+// }
 
